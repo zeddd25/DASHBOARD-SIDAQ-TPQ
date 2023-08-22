@@ -1,17 +1,16 @@
 import { ButtonCustom, InputCustom } from "../../components/ui";
-import { CiLock, CiMail } from "react-icons/ci";
+import { TbMail, TbLock } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 const SignIn = () => {
   return (
     <>
-      {/* <div className='bg-indigo-600 h-[20vh]  lg:-mt-[380px] lg:-skew-y-[50deg] w-full'></div> */}
-      <section className="font-poppins h-screen relative flex flex-col lg:flex-row lg:gap-x-20 items-center">
+      <section className="font-poppins h-screen relative flex items-center">
         <div className="w-[50%] h-full overflow-hidden bg-gradient-to-b from-[#66BF60] to-[#2FBFE7] hidden lg:block">
           <div className="mt-[15px] ml-[25px] absolute">
             <img
-              className="h-[35px]"
-              src="../public/logo-sidaq.png"
+              style={{ height: 50 }}
+              src="../src/assets/images/logo-sidaq.svg"
               alt="../public/.png"
             />
           </div>
@@ -25,19 +24,19 @@ const SignIn = () => {
               Qur’an, <br />
               mencetak 23 juta penghafal Al Qur’an dan <br /> membangun 6.236
               Rumah/Pondok Qur’an di 114 kawasan untuk mensurgakan <br />{" "}
-              Indonesia
+              Indonesia.
             </h1>
           </div>
           <img
             className="opacity-[10%] h-full w-full object-cover"
-            src="../public/motif.svg"
-            alt="Your Logo"
+            src="../src/assets/images/motif.svg"
+            alt="background-motif"
           />
         </div>
-        <div className="max-w-[98%] md:w-[70%] lg:w-[400px] mx-auto">
+        <div className="max-w-[98%]  lg:w-[400px] mx-auto">
           <form className="p-5 flex flex-col gap-4 rounded-xl text-center">
             <div className="w-full flex flex-col items-start mb-10">
-              <h1 className="text-4xl font-extrabold mb-2 text-[#333333]">
+              <h1 className="text-3xl md:text-4xl font-extrabold mb-2 text-[#333333]">
                 Assalamu alaikum!
               </h1>
               <h1 className="text-lg font-medium">Selamat Datang Kembali</h1>
@@ -48,7 +47,7 @@ const SignIn = () => {
               className={
                 "focus:ring-0 outline-none w-full py-3 px-4 text-sm font-semibold md:w-[90%]"
               }
-              icon={<CiMail className="text-2xl text-[#333333]" />}
+              icon={<TbMail className="text-2xl text-[#6c7077]" />}
             />
             <InputCustom
               type="password"
@@ -56,7 +55,7 @@ const SignIn = () => {
               className={
                 "border-[#EEEEEE]focus:ring-0 outline-none w-full py-3 px-4 text-sm font-semibold md:w-[90%]"
               }
-              icon={<CiLock className="text-2xl text-[#333333]" />}
+              icon={<TbLock className="text-3xl text-[#6c7077]" />}
             />
             <div className="flex justify-between items-center mt-4">
               <span className="text-[#333333] flex items-center gap-x-2 text-[12px] md:text-[14px] font-bold">
@@ -75,7 +74,7 @@ const SignIn = () => {
               <ButtonCustom
                 value={"Masuk"}
                 className={
-                  "bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[15px] md:text-[20px] lg:text-[23px] text-white font-[700] my-5 py-2 px-3 md:py-3"
+                  "bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 hover:bg-gradient-to-l hover:from-[#2FBFE7] hover:to-[#66BF60]"
                 }
               />
             </Link>
@@ -83,14 +82,12 @@ const SignIn = () => {
               <h1>
                 Belum memiliki akun Masjid?{" "}
                 <Link to={"/register"}>
-                  <span className="text-[#66BF60] font-bold text-sm">
+                  <span className="text-[#66BF60] font-bold text-sm hover:underline hover:underline-offset-2">
                     Daftar
                   </span>
                 </Link>
               </h1>
             </div>
-            {/* <div className='h-[1.7px] w-full flex justify-center relative bg-[#008C74] before:absolute before:content-["OR"] before:bg-white before:text-[12px] before:w-10 before:-top-[10px] before:font-[600]'></div> */}
-            {/* <Link to={'/register'}><ButtonCustom value={'Sign Up'} className={'border-[#008C74] border-2 text-[15px] md:text-[20px] lg:text-[23px] bg-white rounded-[20px] text-[#008C74] font-[700] my-5 py-2 px-3 md:py-3'}/></Link> */}
           </form>
         </div>
       </section>

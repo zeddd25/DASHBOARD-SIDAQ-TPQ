@@ -1,8 +1,10 @@
-import { CiLock, CiUser, CiMail } from "react-icons/ci";
 import {
-  TbBuildingSkyscraper,
-  TbMapPin,
+  TbBuildingCottage,
+  TbMail,
+  TbLock,
   TbMap,
+  TbMapPin,
+  TbBuildingSkyscraper,
   TbPhotoPlus,
 } from "react-icons/tb";
 import { Link } from "react-router-dom";
@@ -12,12 +14,13 @@ const SignUp = () => {
   return (
     <>
       {/* <div className="bg-[#008C74] h-[50vh] lg:h-[100vh] lg:-mt-[380px] lg:-skew-y-[30deg] w-full"></div> */}
-      <section className="font-poppins h-screen relative flex flex-col lg:flex-row lg:gap-x-20 items-center">
+      <section className="font-poppins h-screen relative flex items-center">
         <div className="w-[50%] h-full overflow-hidden bg-gradient-to-b from-[#66BF60] to-[#2FBFE7] hidden lg:block">
           <div className="mt-[15px] ml-[25px] absolute">
-            <img
-              className="h-[35px]"
-              src="../public/logo-sidaq.png"
+          <img
+              // className="h-[35px]"
+              style={{height: 50}}
+              src="../src/assets/images/logo-sidaq.svg"
               alt="../public/.png"
             />
           </div>
@@ -30,13 +33,13 @@ const SignUp = () => {
               Qur’an, <br />
               mencetak 23 juta penghafal Al Qur’an dan <br /> membangun 6.236
               Rumah/Pondok Qur’an di 114 kawasan untuk mensurgakan <br />{" "}
-              Indonesia
+              Indonesia.
             </h1>
           </div>
           <img
             className="opacity-[10%] h-full w-full object-cover"
-            src="../public/motif.svg"
-            alt="Your Logo"
+            src="../src/assets/images/motif.svg"
+            alt="background-motif"
           />
         </div>
         <div className="max-w-[98%] md:w-[70%] lg:w-[400px] mx-auto">
@@ -52,7 +55,7 @@ const SignUp = () => {
               className={
                 "focus:ring-0 border-none outline-none w-full md:w-[90%] text-sm font-semibold py-3 px-4"
               }
-              icon={<CiUser className="text-2xl text-[#333333]" />}
+              icon={<TbBuildingCottage className="text-2xl text-[#6c7077]" />}
             />
             <InputCustom
               type="email"
@@ -60,7 +63,7 @@ const SignUp = () => {
               className={
                 "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
               }
-              icon={<CiMail className="text-2xl text-[#333333]" />}
+              icon={<TbMail className="text-2xl text-[#6c7077]" />}
             />
             <InputCustom
               type="password"
@@ -68,12 +71,12 @@ const SignUp = () => {
               className={
                 "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
               }
-              icon={<CiLock className="text-2xl text-[#333333]" />}
+              icon={<TbLock className="text-3xl font-semibold text-[#6c7077]" />}
             />
             <InputCustom
               placeholder={"Alamat Masjid"}
               className={
-                "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4 appearance-none"
+                "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4 "
               }
               icon={<TbMapPin className="text-2xl text-[#6c7077]" />}
             />
@@ -119,10 +122,21 @@ const SignUp = () => {
               <ButtonCustom
                 value={"Sign Up"}
                 className={
-                  "bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[15px] md:text-[20px] lg:text-[23px] text-white font-[700] my-5 py-2 px-3 md:py-3"
+                  "bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[20px] md:text-[23px] text-white font-[700] my-5 py-2 px-3 md:py-3 hover:bg-gradient-to-l hover:from-[#2FBFE7] hover:to-[#66BF60]"
                 }
               />
             </Link>
+            <div className="text-[#667085] font-medium text-sm">
+              <h1>
+                Sudah memiliki akun Masjid?{" "}
+                <Link to={"/"}>
+                  <span className="text-[#66BF60] font-bold text-sm hover:underline hover:underline-offset-2">
+                    Masuk
+                  </span>
+                </Link>
+              </h1>
+            </div>
+
           </form>
         </div>
       </section>

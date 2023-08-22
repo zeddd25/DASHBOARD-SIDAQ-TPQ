@@ -1,8 +1,4 @@
+import Santri from "./Santri";
+import Ustadz from "./Ustadz";
 
-const Dashboard = () => {
-  return (
-    <div>Dashboard</div>
-  )
-}
-
-export default Dashboard
+export { Santri, Ustadz }

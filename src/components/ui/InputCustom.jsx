@@ -33,12 +33,12 @@ const InputCustom = ({
             />
             {isShow ? (
               <BsEyeSlash
-                className="text-xl md:text-[28px] text-[#333333] mr-2 cursor-pointer"
+                className="text-2xl text-[#6c7077] mr-2 cursor-pointer"
                 onClick={() => setIsShow(!isShow)}
               />
             ) : (
               <BsEye
-                className="text-xl md:text-[28px] text-[#333333] mr-2 cursor-pointer"
+                className="text-2xl text-[#333333] mr-2 cursor-pointer"
                 onClick={() => setIsShow(!isShow)}
               />
             )}

@@ -1,13 +1,13 @@
-import { SteteContext } from "./context/StateContext"
+import { StateContext } from "./context/StateContext"
 import Routing from "./routes"
 
 
 const App = () => {
 
   return (
-    <SteteContext>
+    <StateContext>
       <Routing/>
-    </SteteContext>
+    </StateContext>
   )
 }
 
