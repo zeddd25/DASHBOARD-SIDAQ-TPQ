@@ -13,8 +13,8 @@ const DoughnutChart = () => {
   };
 
   return (
-    <div className="ring-2 ring-[#16151321] shadow-md w-[512px] h-[347px] my-4 rounded-lg">
-      <div className="ring-2 ring-[#16151321]  h-[39px] rounded-t-lg p-2">
+    <div className="ring-2 ring-[#16151321] shadow-md w-full lg:w-[514px] h-[347px] my-4 rounded-lg">
+      <div className="ring-2 ring-[#16151321]  h-[39px] rounded-t-lg pl-5 pt-2">
         Absensi
       </div>
       <Doughnut data={data} className="m-auto" />

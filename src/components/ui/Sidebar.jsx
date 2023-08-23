@@ -2,11 +2,10 @@ import {
   TbHome,
   TbUser,
   TbSettings,
-  TbLayoutSidebar,
-  TbEdit,
+  TbLayoutSidebarLeftExpand,
+  TbLayoutSidebarLeftCollapse,
 } from "react-icons/tb";
 import { Link } from "react-router-dom";
-import Header from "./Header";
 import { useStateContext } from "../../context/StateContext";
 import React from "react";
 
@@ -16,7 +15,7 @@ const Sidebar = () => {
     { name: "Profile", link: "/", icon: TbUser },
     { name: "Setting", link: "/", icon: TbSettings },
   ];
-  
+
   const { open, setOpen } = useStateContext();
 
   return (
@@ -28,11 +27,19 @@ const Sidebar = () => {
         } duration-500 text-white capitalize px-3`}
       >
         <div className="py-3 flex justify-end">
-          <TbLayoutSidebar
-            size={26}
-            className="cursor-pointer"
-            onClick={() => setOpen(!open)}
-          />
+          {open ? (
+            <TbLayoutSidebarLeftCollapse
+              size={38}
+              className="cursor-pointer"
+              onClick={() => setOpen(!open)}
+            />
+          ) : (
+            <TbLayoutSidebarLeftExpand
+              size={38}
+              className="cursor-pointer"
+              onClick={() => setOpen(!open)}
+            />
+          )}
         </div>
 
         <div

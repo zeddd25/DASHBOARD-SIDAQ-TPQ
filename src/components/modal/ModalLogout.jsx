@@ -3,7 +3,7 @@ const ModalLogout = ({ onClose }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center">
       <div onClick={onClose} className="cursor-pointer absolute inset-0 bg-black opacity-20"></div>
-      <div className="ring-2 ring-[#16151321] z-10 bg-white p-8 w-[496px] h-[279px] rounded-lg shadow-md">
+      <div className="ring-2 ring-[#66BF60] z-10 bg-white p-8 w-[496px] h-[279px] rounded-lg shadow-md">
         {/* Konten modal di sini */}
         <h1 className="text-2xl font-semibold mb-4">Konfirmasi Logout</h1>
         <p className="text-gray-600">

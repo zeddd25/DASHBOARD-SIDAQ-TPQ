@@ -46,7 +46,7 @@ const LineChart = () => {
 };
 
 const DropdownDatePicker = ({ value, onClick }) => (
-  <button className="bg-white border px-4 py-2 rounded-lg shadow-md" onClick={onClick}>
+  <button className="bg-white ring-2 ring-[#16151321] px-4 py-2 rounded-md" onClick={onClick}>
     {value}
   </button>
 );

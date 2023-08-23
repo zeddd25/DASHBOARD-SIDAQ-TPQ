@@ -1,15 +1,31 @@
-import Sidebar from "../../components/ui/Sidebar";
 import { useStateContext } from "../../context/StateContext";
-import Footer from "../../components/ui/Footer";
-import BarChart from "../../components/chart/BarChart";
-import DoughnutChart from "../../components/chart/DoughnutChart";
-import LineChart from "../../components/chart/LineChart";
-import RadarChart from "../../components/chart/RadarChart";
-import CardData from "../../components/ui/CardData";
-import RecapInfo from "../../components/ui/RecapInfo";
-import Header from "../../components/ui/Header";
+import {
+  BarChart,
+  DoughnutChart,
+  LineChart,
+  RadarChart,
+} from "../../components/chart";
+import ModalLogout from "../../components/modal/ModalLogout";
+import { TbEdit } from "react-icons/tb";
+import { useState } from "react";
+import {
+  CardData,
+  Footer,
+  Header,
+  RecapInfo,
+  Sidebar,
+} from "../../components/ui";
 
 const Santri = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleLogoutClick = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
   const { open } = useStateContext();
 
   return (
@@ -17,67 +33,86 @@ const Santri = () => {
       <aside>
         <Sidebar />
       </aside>
-      <main
-        className={`w-full font-poppins ${
-          open ? "w-[1664px] pl-[241px]" : "w-full pl-12"
-        } transition-all`}
+      <div
+        className={`min-h-screen w-full font-poppins m-auto ${
+          open ? "max-w-[1930px] pl-[241px]" : "w-full pl-12"
+        } duration-500`}
       >
-        <Header />
-        <div className="w-full px-12 flex flex-col gap-4 mt-20">
-          <div>
-            <h1 className="text-black text-4xl font-bold leading-snug">
-              {" "}
-              <span className="text-2xl font-thin">
-                Assalamualaikum,👋🏻
-              </span>{" "}
-              <br /> Andaru Danuarta Indrawan
-            </h1>
-          </div>
-          <div className="w-full">
-            <RecapInfo />
-            <div className=" flex justify-between">
-              <CardData
-                title={"Amanah"}
-                icon={<img src="../src/assets/images/amanah.png" />}
-                Information={"BENDAHARA DKM"}
-              />
-              <CardData
-                title={"Kedisplinan"}
-                icon={
-                  <img src="../src/assets/images/kedisiplinan.png" alt="" />
-                }
-                Information={"90"}
-              />
-              <CardData
-                title={"Jumlah Hafalan"}
-                icon={<img src="../src/assets/images/hafalan.png" alt="" />}
-                Information={"29 JUZ"}
-              />
-              <CardData
-                title={"Mutqin"}
-                icon={<img src="../src/assets/images/mutqin.png" alt="" />}
-                Information={"15 JUZ"}
-              />
-              <CardData
-                title={"Fundraising"}
-                icon={<img src="../src/assets/images/Fundraising.png" alt="" />}
-                Information={"151.529,00 Rupiah"}
-              />
+        <main>
+          <Header handleLogoutClick={handleLogoutClick} />
+          <div className="w-full px-12 flex flex-col gap-4 mt-20">
+            <div>
+              <h1 className="text-black text-2xl lg:text-4xl font-bold leading-snug">
+                {" "}
+                <span className="text-2xl font-thin">
+                  Assalamualaikum,👋🏻
+                </span>{" "}
+                <br /> Andaru Danuarta Indrawan
+              </h1>
+            </div>
+            <div className="w-full">
+              <RecapInfo />
+              <div className="flex flex-wrap gap-4 lg:justify-start lg:gap-[10.7px]">
+                <CardData
+                  title={"Amanah"}
+                  icon={<img src="../src/assets/images/amanah.png" />}
+                  Information={"BENDAHARA DKM"}
+                />
+                <CardData
+                  title={"Kedisplinan"}
+                  icon={
+                    <img
+                      src="../src/assets/images/kedisiplinan.png"
+                      alt="icon"
+                    />
+                  }
+                  Information={"90"}
+                />
+                <CardData
+                  title={"Jumlah Hafalan"}
+                  icon={
+                    <img src="../src/assets/images/hafalan.png" alt="icon" />
+                  }
+                  Information={"29 JUZ"}
+                />
+                <CardData
+                  title={"Mutqin"}
+                  icon={
+                    <img src="../src/assets/images/mutqin.png" alt="icon" />
+                  }
+                  Information={"15 JUZ"}
+                />
+                <CardData
+                  title={"Fundraising"}
+                  icon={
+                    <img
+                      src="../src/assets/images/Fundraising.png"
+                      alt="icon"
+                    />
+                  }
+                  edit={
+                    <TbEdit className="text-[26px] lg:ml-28 cursor-pointer" />
+                  }
+                  Information={"151.529,00 Rupiah"}
+                />
+              </div>
+            </div>
+
+            <div className="w-full flex flex-col gap-4">
+              <LineChart />
+              <div className="flex flex-wrap gap-4 justify-center  lg:gap-[10.7px]">
+                <RadarChart />
+                <BarChart />
+                <DoughnutChart />
+              </div>
             </div>
           </div>
-          <div className="w-full flex flex-col gap-4">
-            <LineChart />
-            <div className="flex justify-between">
-              <RadarChart />
-              <BarChart />
-              <DoughnutChart />
-            </div>
-          </div>
-        </div>
-      </main>
-      <footer>
-        <Footer />
-      </footer>
+          {showModal && <ModalLogout onClose={handleCloseModal} />}
+        </main>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
     </>
   );
 };

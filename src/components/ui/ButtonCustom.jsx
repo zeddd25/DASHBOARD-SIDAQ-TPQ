@@ -1,7 +1,8 @@
 
-const ButtonCustom = ({type = 'button',className,value,eventOnClick}) => {
+const ButtonCustom = ({type = 'button',className,value,icon,eventOnClick}) => {
   return (
-    <button type={type} className={`${className} rounded-full w-full`} onClick={eventOnClick}>
+    <button type={type} className={`${className} rounded-full `} onClick={eventOnClick}>
+        {icon}
         {value}
     </button>
   )

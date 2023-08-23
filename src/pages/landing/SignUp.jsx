@@ -9,17 +9,56 @@ import {
 } from "react-icons/tb";
 import { Link } from "react-router-dom";
 import { ButtonCustom, InputCustom } from "../../components/ui";
+import { useEffect, useState } from "react";
 
 const SignUp = () => {
+  const [provinces, setProvinces] = useState([]);
+  const [selectedProvince, setSelectedProvince] = useState("");
+  const [regencies, setRegencies] = useState([]);
+  const [selectedRegency, setSelectedRegency] = useState("");
+
+  useEffect(() => {
+    fetchProvinces();
+  }, []);
+
+  const fetchProvinces = async () => {
+    try {
+      const response = await fetch(
+        "https://dev.farizdotid.com/api/daerahindonesia/provinsi"
+      );
+      const data = await response.json();
+      setProvinces(data.provinsi);
+    } catch (error) {
+      console.error("Error fetching provinces:", error);
+    }
+  };
+
+  const fetchRegencies = async (provinceId) => {
+    try {
+      const response = await fetch(
+        `https://dev.farizdotid.com/api/daerahindonesia/kota?id_provinsi=${provinceId}`
+      );
+      const data = await response.json();
+      setRegencies(data.kota_kabupaten);
+    } catch (error) {
+      console.error("Error fetching regencies:", error);
+    }
+  };
+
+  const handleProvinceChange = (event) => {
+    const selectedProvinceId = event.target.value;
+    setSelectedProvince(selectedProvinceId);
+    fetchRegencies(selectedProvinceId);
+  };
   return (
     <>
       {/* <div className="bg-[#008C74] h-[50vh] lg:h-[100vh] lg:-mt-[380px] lg:-skew-y-[30deg] w-full"></div> */}
       <section className="font-poppins h-screen relative flex items-center">
         <div className="w-[50%] h-full overflow-hidden bg-gradient-to-b from-[#66BF60] to-[#2FBFE7] hidden lg:block">
           <div className="mt-[15px] ml-[25px] absolute">
-          <img
+            <img
               // className="h-[35px]"
-              style={{height: 50}}
+              style={{ height: 50 }}
               src="../src/assets/images/logo-sidaq.svg"
               alt="../public/.png"
             />
@@ -71,7 +110,9 @@ const SignUp = () => {
               className={
                 "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
               }
-              icon={<TbLock className="text-3xl font-semibold text-[#6c7077]" />}
+              icon={
+                <TbLock className="text-3xl font-semibold text-[#6c7077]" />
+              }
             />
             <InputCustom
               placeholder={"Alamat Masjid"}
@@ -85,13 +126,19 @@ const SignUp = () => {
               <TbBuildingSkyscraper className="text-2xl text-[#6c7077]" />
               <select
                 className="text-[#9CA3AF] outline-none text-sm w-full bg-transparent py-4"
-                name=""
-                id=""
+                value={selectedProvince}
+                onChange={handleProvinceChange}
               >
-                <option value="">Kota/Kabupaten</option>
-                <option value="">SOLO</option>
-                <option value="">SURABAYA</option>
-                <option value="">JAKARTA</option>
+                <option>Pilih Provinsi</option>
+                {provinces.map((province) => (
+                  <option
+                    className="text-black"
+                    key={province.id}
+                    value={province.id}
+                  >
+                    {province.nama}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -99,13 +146,19 @@ const SignUp = () => {
               <TbMap className="text-2xl text-[#6c7077]" />
               <select
                 className="text-[#9CA3AF] outline-none text-sm w-full bg-transparent py-4"
-                name=""
-                id=""
+                value={selectedRegency}
+                onChange={(event) => setSelectedRegency(event.target.value)}
               >
-                <option value="">Provinsi</option>
-                <option value="">YOGYAKARTA</option>
-                <option value="">JAWA TENGAH</option>
-                <option value="">JAWA BARAT</option>
+                <option>Pilih Kabupaten/Kota</option>
+                {regencies.map((regency) => (
+                  <option
+                    className="text-black"
+                    key={regency.id}
+                    value={regency.id}
+                  >
+                    {regency.nama}
+                  </option>
+                ))}
               </select>
             </div>
 
@@ -122,7 +175,7 @@ const SignUp = () => {
               <ButtonCustom
                 value={"Sign Up"}
                 className={
-                  "bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[20px] md:text-[23px] text-white font-[700] my-5 py-2 px-3 md:py-3 hover:bg-gradient-to-l hover:from-[#2FBFE7] hover:to-[#66BF60]"
+                  "w-full bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[20px] md:text-[23px] text-white font-[700] my-5 py-2 px-3 md:py-3 hover:bg-gradient-to-l hover:from-[#2FBFE7] hover:to-[#66BF60]"
                 }
               />
             </Link>
@@ -136,7 +189,6 @@ const SignUp = () => {
                 </Link>
               </h1>
             </div>
-
           </form>
         </div>
       </section>

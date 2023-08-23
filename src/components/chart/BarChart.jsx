@@ -3,7 +3,7 @@ import { Chart as ChartJS } from "chart.js/auto";
 
 const BarChart = () => {
   const data = {
-    labels: ["Sholat Tahajud", "ODOJ", "STW", "Majelis"],
+    labels: ["Tahajud", "ODOJ", "STW", "Majelis"],
     datasets: [
       {
         label: "Amal Yaumi",
@@ -34,11 +34,11 @@ const BarChart = () => {
   };
 
   return (
-    <div className="ring-2 ring-[#16151321] shadow-md w-[512px] h-[347px] my-4 rounded-lg">
-      <div className="ring-2 ring-[#16151321] h-[39px] rounded-t-lg p-2">
+    <div className="ring-2 ring-[#16151321] shadow-md w-full lg:w-[514px] h-[347px] my-4 rounded-lg">
+      <div className="ring-2 ring-[#16151321] h-[39px] rounded-t-lg pl-5 pt-2">
         Amal Yaumi
       </div>
-      <Bar data={data} options={options} width={300} className="mt-6" />
+      <Bar data={data} options={options} height={190} className="mx-4 m-auto" />
     </div>
   );
 };

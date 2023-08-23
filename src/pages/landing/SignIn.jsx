@@ -74,7 +74,7 @@ const SignIn = () => {
               <ButtonCustom
                 value={"Masuk"}
                 className={
-                  "bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 hover:bg-gradient-to-l hover:from-[#2FBFE7] hover:to-[#66BF60]"
+                  "w-full bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 hover:bg-gradient-to-l hover:from-[#2FBFE7] hover:to-[#66BF60]"
                 }
               />
             </Link>
