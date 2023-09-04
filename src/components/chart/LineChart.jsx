@@ -3,6 +3,7 @@ import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { getChartHeight } from "../../utils/getChartHeight";
 
 const LineChart = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -28,6 +29,8 @@ const LineChart = () => {
     // Misalnya, mengambil data dari backend berdasarkan tanggal yang dipilih.
   };
 
+  const chartHeight = getChartHeight();
+
   return (
     <div className="flex ring-2 ring-[#16151321] shadow-md rounded-md mt-4">
       <div className="w-full flex flex-col items-start p-4">
@@ -38,7 +41,7 @@ const LineChart = () => {
           customInput={<DropdownDatePicker />}
         />
         <div className="w-full mt-8 flex justify-center">
-          <Line data={data} height={70} />
+        <Line data={data} height={chartHeight} />
         </div>
       </div>
     </div>

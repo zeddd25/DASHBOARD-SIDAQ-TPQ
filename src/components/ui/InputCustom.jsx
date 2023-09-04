@@ -4,19 +4,22 @@ import { BsEyeSlash, BsEye } from "react-icons/bs";
 const InputCustom = ({
   type = "text",
   placeholder,
+  placeholderImage,
   id,
   className,
   classNameDiv,
   icon,
+  name,
+  onChange,
 }) => {
   const [isShow, setIsShow] = useState(false);
-  const [selectedFile, setSelectedFile] = useState(null);
+  // const [selectedFile, setSelectedFile] = useState(null);
   const showError = false;
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setSelectedFile(file);
-  };
+  // const handleFileChange = (event) => {
+  //   const file = event.target.files[0];
+  //   setSelectedFile(file);
+  // };
 
   return (
     <div>
@@ -30,6 +33,8 @@ const InputCustom = ({
               type={isShow ? "text" : "password"}
               placeholder={placeholder}
               className={`${className} bg-transparent text-[#333333]`}
+              name={name}
+              onChange={onChange}
             />
             {isShow ? (
               <BsEyeSlash
@@ -63,13 +68,16 @@ const InputCustom = ({
           <label
             className={`${className} bg-transparent text-[#333333] cursor-pointer`}
           >
-            {selectedFile ? selectedFile.name : placeholder}
+            {placeholderImage}
+            {/* {selectedFile ? selectedFile.name : placeholder} */}
+            {placeholder}
             <input
               type="file"
               id={id}
               className="hidden"
+              name={name}
+              onChange={onChange}
               aria-labelledby={id}
-              onChange={handleFileChange}
             />
           </label>
         </div>
@@ -81,8 +89,10 @@ const InputCustom = ({
           <input
             type={type}
             id={id}
+            name={name}
+            onChange={onChange}
             placeholder={placeholder}
-            className={`${className} bg-transparent text-[#333333]`}
+            className={`${className} bg-transparent text-[#333333] outline-none`}
           />
         </div>
       )}

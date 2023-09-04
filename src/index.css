@@ -2,3 +2,64 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.swal2-popup .swal2-actions .swal2-confirm {
+  padding: 10px 50px;
+  border-radius: 50px;
+  background: linear-gradient(
+    135deg,
+    #66bf60,
+    #2fbfe7
+  ); /* Ganti dengan warna yang diinginkan */
+}
+
+.swal2-popup .swal2-actions .swal2-confirm:not([disabled]):hover {
+  background: linear-gradient(
+    135deg,
+    #2fbfe7,
+    #66bf60
+  ); /* Gradient dari hijau tua ke biru tua pada hover */
+}
+
+.value h2 {
+  color: #333333;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.custom-loader {
+  --d: 22px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  color: #66bf60;
+  box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0,
+    calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px,
+    calc(0 * var(--d)) calc(1 * var(--d)) 0 2px,
+    calc(-0.707 * var(--d)) calc(0.707 * var(--d)) 0 3px,
+    calc(-1 * var(--d)) calc(0 * var(--d)) 0 4px,
+    calc(-0.707 * var(--d)) calc(-0.707 * var(--d)) 0 5px,
+    calc(0 * var(--d)) calc(-1 * var(--d)) 0 6px;
+  animation: s7 1s infinite steps(8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Warna latar belakang semi-transparan */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* z-index: 9999; */
+}
+
+@keyframes s7 {
+  100% {
+    transform: rotate(1turn);
+  }
+}

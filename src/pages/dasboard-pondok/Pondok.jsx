@@ -5,82 +5,74 @@ import {
   LineChart,
   RadarChart,
 } from "../../components/chart";
-import ModalLogout from "../../components/modal/ModalLogout";
 import { TbEdit } from "react-icons/tb";
+import { CardData, RecapInfo, } from "../../components/ui";
+import ModalCustom from "../../components/modal/ModalCustom";
 import { useState } from "react";
-import {
-  CardData,
-  Footer,
-  Header,
-  RecapInfo,
-  Sidebar,
-} from "../../components/ui";
 
-const Santri = () => {
-  const [showModal, setShowModal] = useState(false);
 
-  const handleLogoutClick = () => {
+const Pondok = () => {
+  const [showModal, setShowModal] = useState(false)
+  
+  const handleUpdate = () => {
     setShowModal(true);
   };
 
-  const handleCloseModal = () => {
+  const handleCancel = () => {
     setShowModal(false);
   };
+
   const { open } = useStateContext();
 
   return (
     <>
-      <aside>
-        <Sidebar />
-      </aside>
       <div
         className={`min-h-screen w-full font-poppins m-auto ${
-          open ? "max-w-[1930px] pl-[241px]" : "w-full pl-12"
+          open ? "max-w-[1930px] md:pl-[241px]": "w-full md:pl-16"
         } duration-500`}
-      >
+        >
         <main>
-          <Header handleLogoutClick={handleLogoutClick} />
-          <div className="w-full px-12 flex flex-col gap-4 mt-20">
+          <div className="w-full px-4 flex flex-col gap-4 mt-5">
             <div>
               <h1 className="text-black text-2xl lg:text-4xl font-bold leading-snug">
                 {" "}
                 <span className="text-2xl font-thin">
                   Assalamualaikum,👋🏻
                 </span>{" "}
-                <br /> Andaru Danuarta Indrawan
+                <br />Masjid Pemuda Peradaban 
               </h1>
             </div>
             <div className="w-full">
-              <RecapInfo />
+              <RecapInfo title={"Rekapan Anda"} />
               <div className="flex flex-wrap gap-4 lg:justify-start lg:gap-[10.7px]">
                 <CardData
-                  title={"Amanah"}
-                  icon={<img src="../src/assets/images/amanah.png" />}
-                  Information={"BENDAHARA DKM"}
+                  title={"Ustadz"}
+                  icon={<img src="../src/assets/images/ustadz.png" />}
+                  Information={"33"}
                 />
                 <CardData
-                  title={"Kedisplinan"}
+                  title={"Santri"}
                   icon={
                     <img
-                      src="../src/assets/images/kedisiplinan.png"
+                      src="../src/assets/images/santri.png"
                       alt="icon"
                     />
                   }
-                  Information={"90"}
+                  Information={"102"}
                 />
                 <CardData
-                  title={"Jumlah Hafalan"}
+                  title={"Bangunan"}
                   icon={
-                    <img src="../src/assets/images/hafalan.png" alt="icon" />
+                    <img src="../src/assets/images/bangunan.png" alt="icon" />
                   }
-                  Information={"29 JUZ"}
+                  Information={"7"}
                 />
                 <CardData
-                  title={"Mutqin"}
+                  title={"Saldo"}
                   icon={
-                    <img src="../src/assets/images/mutqin.png" alt="icon" />
+                    <img src="../src/assets/images/saldo.png" alt="icon" />
                   }
-                  Information={"15 JUZ"}
+                  Information={"22.251.529,00 Rupiah"}
                 />
                 <CardData
                   title={"Fundraising"}
@@ -91,7 +83,12 @@ const Santri = () => {
                     />
                   }
                   edit={
-                    <TbEdit className="text-[26px] lg:ml-28 cursor-pointer" />
+                    <div className="w-full flex justify-end">
+                      <TbEdit
+                        className="text-3xl cursor-pointer"
+                        onClick={handleUpdate}
+                      />
+                    </div>
                   }
                   Information={"151.529,00 Rupiah"}
                 />
@@ -100,21 +97,18 @@ const Santri = () => {
 
             <div className="w-full flex flex-col gap-4">
               <LineChart />
-              <div className="flex flex-wrap gap-4 justify-center  lg:gap-[10.7px]">
+              <div className="flex flex-wrap gap-4 justify-center lg:gap-[11px]">
                 <RadarChart />
                 <BarChart />
                 <DoughnutChart />
               </div>
+                {showModal && <ModalCustom onClose={handleCancel} />}
             </div>
           </div>
-          {showModal && <ModalLogout onClose={handleCloseModal} />}
         </main>
-        <footer>
-          <Footer />
-        </footer>
       </div>
     </>
   );
 };
 
-export default Santri;
+export default Pondok;
