@@ -44,7 +44,7 @@ const Pondok = () => {
             </div>
             <div className="w-full">
               <RecapInfo title={"Rekapan Anda"} />
-              <div className="flex flex-wrap gap-4 lg:justify-start lg:gap-[10.7px]">
+              <div className="flex flex-wrap gap-4 lg:justify-start lg:gap-[10.5px]">
                 <CardData
                   title={"Ustadz"}
                   icon={<img src="../src/assets/images/ustadz.png" />}

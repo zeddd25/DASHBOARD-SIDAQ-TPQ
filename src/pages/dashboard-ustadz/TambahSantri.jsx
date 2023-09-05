@@ -1,8 +1,102 @@
-import { TbCalendar, TbLock, TbMail, TbUser, TbUserStar, TbUsersGroup, TbVersions } from "react-icons/tb";
-import { InputCustom, RecapInfo } from "../../components/ui";
+import React, { useState } from "react";
+import {
+  TbCalendar,
+  TbLock,
+  TbMail,
+  TbPhotoPlus,
+  TbUser,
+  TbUsersGroup,
+  TbVersions,
+} from "react-icons/tb";
+import { ButtonCustom, InputCustom, RecapInfo } from "../../components/ui";
 import { useStateContext } from "../../context/StateContext";
+import instance from "../../services/api";
+import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer dan toast
+import "react-toastify/dist/ReactToastify.css"; // Import CSS Toastify
 
 const TambahSantri = () => {
+  const [selectedFileName, setSelectedFileName] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    gambar: null,
+    email: "",
+    password: "",
+    role: "santri_pondok",
+    tgl_lahir: "",
+    gender: "Pilih jenis kelamin",
+    angkatan: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      gambar: file,
+    }));
+    setSelectedFileName(file.name);
+  };
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+
+    const { name, email, password, gender, tgl_lahir, gambar, angkatan } = formData;
+
+    if (
+      name === "" ||
+      email === "" ||
+      password === "" ||
+      formData.role === "" ||
+      gender === "Pilih jenis kelamin" ||
+      tgl_lahir === "" ||
+      angkatan === "" ||
+      gambar === null
+    ) {
+      toast.error("Pastikan isi semua inputan!"); // Menggunakan toast.error
+      return;
+    }
+
+    setIsLoading(true);
+
+    const data = new FormData();
+    data.append("name", name);
+    data.append("email", email);
+    data.append("password", password);
+    data.append("role", formData.role);
+    data.append("gender", gender);
+    data.append("tgl_lahir", tgl_lahir);
+    data.append("gambar", gambar);
+    data.append("angkatan", angkatan);
+
+    const authToken = localStorage.getItem("token");
+
+    instance
+      .post("/register/santri", data, {
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+        },
+      })
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+        toast.success("Pendaftaran akun Anda berhasil!"); // Menggunakan toast.success
+      })
+      .catch((error) => {
+        console.log(error);
+        toast.error("Pendaftaran gagal. Silakan coba lagi nanti!"); // Menggunakan toast.error
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }
+
   const { open } = useStateContext();
 
   return (
@@ -18,11 +112,13 @@ const TambahSantri = () => {
           <h1>Data Santri</h1>
         </div>
 
-        <div className="border border-[#66BF60] w-full rounded-b-lg p-4 flex flex-col gap-4">
+        <form onSubmit={handleFormSubmit} className="border border-[#66BF60] w-full rounded-b-lg p-4 flex flex-col gap-4">
           <div>
             <h3 className="text-sm mb-2">Nama</h3>
             <InputCustom
-              placeholder={"Muhamad Sholeh Al Atsary"}
+              name="name"
+              onChange={handleInputChange}
+              placeholder={"Nama Santri"}
               className={
                 "focus:ring-0 border-none outline-none w-full md:w-[90%] text-sm font-semibold py-2 px-4"
               }
@@ -32,6 +128,8 @@ const TambahSantri = () => {
           <div>
             <h3 className="text-sm mb-2">Email</h3>
             <InputCustom
+              name="email"
+              onChange={handleInputChange}
               type="email"
               placeholder={"muhamadsholeh@gmail.com"}
               className={
@@ -44,6 +142,8 @@ const TambahSantri = () => {
             <h3 className="text-sm mb-2">Kata Sandi</h3>
             <InputCustom
               type="password"
+              name="password"
+              onChange={handleInputChange}
               placeholder={"minimal karakter 8+"}
               className={
                 "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
@@ -56,8 +156,9 @@ const TambahSantri = () => {
           <div>
             <h3 className="text-sm mb-2">Tanggal Lahir</h3>
             <InputCustom
-              type=""
-              placeholder={"13-08-2023"}
+              name="tgl_lahir"
+              onChange={handleInputChange}
+              placeholder={"2000-10-10"}
               className={
                 "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
               }
@@ -66,30 +167,27 @@ const TambahSantri = () => {
               }
             />
           </div>
-          <div>
-            <h3 className="text-sm mb-2">Jenis Kelamin</h3>
-            <div className="flex gap-5 rounded-lg bg-slate-50 py-3 px-4 ">
+          <div className="w-full flex items-center justify-between ring-1 ring-[#EEEEEE] rounded-md py-3 px-4">
+            <select
+              name="gender"
+              value={formData.gender}
+              onChange={handleInputChange}
+              className={
+                "text-sm font-semibold focus:ring-0 border-none outline-none w-full "
+              }
+            >
+              <option value="Pilih jenis kelamin">Pilih jenis kelamin</option>
+              <option value="Laki-laki">Laki-laki</option>
+              <option value="Perempuan">Perempuan</option>
+            </select>
             <TbUsersGroup className="text-3xl font-semibold text-[#6c7077]" />
-            <select name="" id="" className="w-full rounded-lg bg-slate-50 outline-none">
-              <option value="">Laki-Laki</option>
-              <option value="">Perempuan</option>
-              <option value="">Waria</option>
-            </select>
-            </div>
-          </div>
-          <div>
-            <h3 className="text-sm mb-2">Status</h3>
-            <div className="flex gap-5 rounded-lg bg-slate-50 py-3 px-4 ">
-            <TbUserStar className="text-3xl font-semibold text-[#6c7077]" />
-            <select name="" id="" className="w-full rounded-lg bg-slate-50 outline-none">
-              <option value="">Santri</option>
-              <option value="">Staff Pondok</option>
-            </select>
-            </div>
           </div>
           <div>
             <h3 className="text-sm mb-2">Angkatan</h3>
             <InputCustom
+              type="number"
+              name="angkatan"
+              onChange={handleInputChange}
               placeholder={"16"}
               className={
                 "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
@@ -99,8 +197,26 @@ const TambahSantri = () => {
               }
             />
           </div>
-        </div>
+          <InputCustom
+            type="file"
+            name={"gambar"}
+            onChange={handleFileChange}
+            placeholder={selectedFileName ? selectedFileName : "Uploud Foto Wajah"}
+            className={
+              "text-sm text-[#9CA3AF] font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4 appearance-none cursor-pointer"
+            }
+            icon={<TbPhotoPlus className="text-2xl text-[#6c7077]" />}
+          />
+          <ButtonCustom
+            value={"Daftar"}
+            type="submit"
+            className={
+              "w-full bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 md:py-3 hover:bg-gradient-to-l hover:from-[#2FBFE7] hover:to-[#66BF60]"
+            }
+          />
+        </form>
       </div>
+      <ToastContainer /> {/* Tambahkan ToastContainer di komponen Anda */}
     </div>
   );
 };

@@ -63,3 +63,27 @@
     transform: rotate(1turn);
   }
 }
+
+/* Tambahkan animasi masuk */
+.modal-entering {
+  opacity: 0;
+  transform: translateY(-20%);
+}
+
+/* Tambahkan animasi masuk aktif */
+.modal-entered {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+
+/* Tambahkan animasi keluar */
+.modal-exiting {
+  opacity: 0;
+  transform: translateY(-20%);
+}
+
+/* Tambahkan animasi keluar aktif */
+.modal-exited {
+  display: none;
+}

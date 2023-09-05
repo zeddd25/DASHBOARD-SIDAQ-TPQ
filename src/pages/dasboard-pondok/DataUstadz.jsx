@@ -1,7 +1,19 @@
+import { useState } from "react";
+import ModalAdd from "../../components/modal/ModalAdd";
 import { ButtonCustom, RecapInfo } from "../../components/ui";
 import { useStateContext } from "../../context/StateContext";
 
 const DataUstadz = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleUpdate = () => {
+    setShowModal(true);
+  };
+
+  const handleCancel = () => {
+    setShowModal(false);
+  };
+
   const { open } = useStateContext();
 
   return (
@@ -14,10 +26,11 @@ const DataUstadz = () => {
         <RecapInfo title={"Data Ustadz"} />
         <div className="relative mr-5 overflow-x-auto">
           <div className="flex items-center justify-between pb-4 bg-white">
-            <ButtonCustom 
-            value={"Tambah Ustadz"} 
-            type="submit" 
-            className={"bg-[#66BF60] px-7 py-2 rounded-md text-white"}
+            <ButtonCustom
+              value={"Tambah Ustadz"}
+              type="submit"
+              eventOnClick={handleUpdate}
+              className={"bg-[#66BF60] px-7 py-2 rounded-md text-white"}
             />
             <label htmlFor="table-search" className="sr-only">
               Search
@@ -250,6 +263,7 @@ const DataUstadz = () => {
           </table>
         </div>
       </div>
+      {showModal && <ModalAdd onClose={handleCancel} />}
     </>
   );
 };
