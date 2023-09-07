@@ -14,6 +14,8 @@ import { useEffect } from "react";
 import instance from "../../services/api";
 import Swal from "sweetalert2";
 import "sweetalert2/dist/sweetalert2.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const [provinces, setProvinces] = useState([]);
@@ -130,13 +132,35 @@ const SignUp = () => {
       kabupaten === "" ||
       gambar === null
     ) {
-      Swal.fire({
-        icon: "error",
-        title: "Kesalahan!",
-        text: "Pastikan isi semua inputan!",
-      });
+      toast.error("Pastikan isi semua inputan!", { toastId: "error" });
       return;
     }
+
+       // Validasi panjang kata sandi
+       if (password.length < 8) {
+        toast.error("Kata sandi harus terdiri dari minimal 8 karakter!", {
+          toastId: "error",
+        });
+        return;
+      }
+  
+      // Validasi ukuran file gambar
+      const maxFileSizeMB = 5; // Ukuran maksimal dalam MB
+      if (gambar.size > maxFileSizeMB * 1024 * 1024) {
+        toast.error(`Ukuran file gambar harus kurang dari ${maxFileSizeMB} MB!`, {
+          toastId: "error",
+        });
+        return;
+      }
+  
+      // Validasi format file gambar
+      const allowedImageFormats = ["image/jpeg", "image/png", "image/jpg"];
+      if (!allowedImageFormats.includes(gambar.type)) {
+        toast.error("Format file gambar harus berupa JPEG, JPG atau PNG!", {
+          toastId: "error",
+        });
+        return;
+      }
 
     setIsLoading(true);
 
@@ -155,7 +179,7 @@ const SignUp = () => {
       .then((response) => {
         console.log(JSON.stringify(response.data));
         Swal.fire({
-          icon: 'success',
+          icon: "success",
           title: "Berhasil!",
           text: "Pendaftaran akun Anda telah berhasil dilakukan. Namun, akun Anda saat ini masih dalam tahap validasi oleh administrator kami. Setelah proses validasi selesai, Anda akan menerima pemberitahuan melalui email yang telah terdaftar. Terima kasih atas kesabaran dan pengertiannya.",
         }).then(() => {
@@ -165,7 +189,7 @@ const SignUp = () => {
       .catch((error) => {
         console.log(error);
         Swal.fire({
-          icon: 'error',
+          icon: "error",
           title: "Gagal!",
           text: "Pendaftaran gagal. Silakan coba lagi nanti.",
         });
@@ -177,11 +201,11 @@ const SignUp = () => {
 
   return (
     <>
-      {isLoading ? ( 
+      {isLoading ? (
         <div className="custom-loader m-auto" />
       ) : (
         <section className="font-poppins h-screen relative flex items-center">
-          <div className="w-[50%] h-full overflow-hidden bg-gradient-to-b from-[#66BF60] to-[#2FBFE7] hidden lg:block">
+          <div className="w-[50%] h-full overflow-hidden bg-gradient-to-b from-[#00E676] to-[#673AB7] hidden lg:block">
             <div className="mt-[15px] ml-[25px] absolute">
               <img
                 style={{ height: 50 }}
@@ -316,14 +340,14 @@ const SignUp = () => {
                 value={"Sign Up"}
                 type="submit"
                 className={
-                  "w-full bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 md:py-3 hover:bg-gradient-to-l hover:from-[#2FBFE7] hover:to-[#66BF60]"
+                  "w-full bg-gradient-to-tl from-[#673AB7] to-[#00E676] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 md:py-3 hover:bg-gradient-to-tl hover:to-[#00e677d5] hover:from-[#683ab7dc]"
                 }
               />
               <div className="text-[#667085] font-medium text-sm">
                 <h1>
                   Sudah memiliki akun Masjid?{" "}
                   <Link to={"/"}>
-                    <span className="text-[#66BF60] font-bold text-sm hover:underline hover:underline-offset-2">
+                    <span className="text-[#00E676] font-bold text-sm hover:underline hover:underline-offset-2">
                       Masuk
                     </span>
                   </Link>
@@ -331,6 +355,7 @@ const SignUp = () => {
               </div>
             </form>
           </div>
+          <ToastContainer />
         </section>
       )}
     </>

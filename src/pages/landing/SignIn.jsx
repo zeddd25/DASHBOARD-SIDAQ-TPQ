@@ -3,6 +3,8 @@ import { ButtonCustom, InputCustom } from "../../components/ui";
 import { TbMail, TbLock } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
 import instance from "../../services/api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -15,11 +17,9 @@ const SignIn = () => {
     e.preventDefault();
 
     if (email === "" || password === "") {
-      alert("Email dan Password harus diisi semua!!");
+      toast.error("Pastikan isi semua inputan!", { toastId: "error" });
       return;
     }
-
-    setIsLoading(true);
 
     let data = new FormData();
     data.append("email", email);
@@ -35,10 +35,12 @@ const SignIn = () => {
       .request(config)
       .then((response) => {
         console.log(JSON.stringify(response.data));
+        setIsLoading(true);
+
         if (response.data.token) {
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("name", response.data.user.name);
-          localStorage.setItem("role", response.data.user.role);
+          sessionStorage.setItem("token", response.data.token);
+          sessionStorage.setItem("name", response.data.user.name);
+          sessionStorage.setItem("role", response.data.user.role);
 
           const userRole = response.data.user.role;
 
@@ -55,7 +57,8 @@ const SignIn = () => {
             navigate("/");
           }
         } else {
-          alert("Email atau Password salah");
+          setIsLoading(false);
+          toast.error("Email atau Password salah!", { toastId: "error" });
         }
       })
       .catch((error) => {
@@ -82,7 +85,7 @@ const SignIn = () => {
         <div className="custom-loader m-auto" />
       ) : (
         <section className="font-poppins h-screen relative flex items-center">
-          <div className="w-[50%] h-full overflow-hidden bg-gradient-to-b from-[#66BF60] to-[#2FBFE7] hidden lg:block">
+          <div className="w-[50%] h-full overflow-hidden bg-gradient-to-b from-[#00E676] to-[#673AB7] hidden lg:block">
             <div className="mt-[15px] ml-[25px] absolute">
               <img
                 style={{ height: 50 }}
@@ -157,14 +160,14 @@ const SignIn = () => {
                 type="submit"
                 value={"Masuk"}
                 className={
-                  "w-full bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 hover:bg-gradient-to-l hover:from-[#2FBFE7] hover:to-[#66BF60]"
+                  "w-full bg-gradient-to-tl from-[#673AB7] to-[#00E676] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 hover:bg-gradient-to-tl hover:to-[#00e677d5] hover:from-[#683ab7dc]"
                 }
               />
               <div className="text-[#667085] font-medium text-sm">
                 <h1>
                   Belum memiliki akun Masjid?{" "}
                   <Link to={"/register"}>
-                    <span className="text-[#66BF60] font-bold text-sm hover:underline hover:underline-offset-2">
+                    <span className="text-[#00E676] font-bold text-sm hover:underline hover:underline-offset-2">
                       Daftar
                     </span>
                   </Link>
@@ -172,6 +175,7 @@ const SignIn = () => {
               </div>
             </form>
           </div>
+          <ToastContainer />
         </section>
       )}
     </>

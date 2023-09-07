@@ -5,7 +5,7 @@ export const getChartHeight = () => {
 
 export const radarChartHeight =  () => {
   const windowWidth = window.innerWidth;
-  return windowWidth < 768 ? 200 : 10; // Ubah nilai sesuai kebutuhan
+  return windowWidth < 768 ? 200 : 190; // Ubah nilai sesuai kebutuhan
 }
 
 export const barChartHeight =  () => {

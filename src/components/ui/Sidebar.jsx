@@ -114,13 +114,30 @@ const Sidebar = () => {
     },
   ];
 
+  let sidebarTitle = "Dashboard";
+
+  if (
+    isPondokPage ||
+    isPondokProfilePage ||
+    isPondokDataUstadz ||
+    isPondokDataSantri
+  ) {
+    sidebarTitle = "Masjid";
+  } else if (isSantriPage || isSantriProfilePage || isSantriPengaturanPage) {
+    sidebarTitle = "Santri";
+  } else if (isUstadzPage || isUstadzProfilePage || isUstadzDataSantriPage || isUstadzSkillSantriPage || isUstadzTambahSantriPage ) {
+    sidebarTitle = "Ustadz";
+  } else if (isStaffUstadzPage) {
+    sidebarTitle = "Staff Ustadz";
+  }
+
   const { open, setOpen } = useStateContext();
 
   return (
     <section className="hidden font-poppins md:flex">
       {/* SIDEBAR */}
       <div
-        className={`fixed bg-gradient-to-b from-[#66BF60] to-[#2FBFE7] min-h-screen ${
+        className={`fixed bg-gradient-to-b from-[#00E676] to-[#673AB7] min-h-screen ${
           open ? "w-[241px]" : "w-16"
         } duration-500 text-white capitalize px-3`}
       >
@@ -153,7 +170,7 @@ const Sidebar = () => {
             open ? "text-lg" : "hidden"
           } duration-500`}
         >
-          <h1>Ustadz</h1>
+          <h1>{sidebarTitle}</h1>
         </div>
 
         <div className="mt-8 flex flex-col gap-4 relative">
@@ -167,7 +184,7 @@ const Sidebar = () => {
                 key={i}
                 className={`${
                   menu.gap ? "mt-9" : "mt-2"
-                } h-[40px] group flex items-center text-sm gap-3.5 font-semibold tracking-wide p-2 hover:bg-[#ffffff7a]
+                } h-[40px] group flex items-center text-sm gap-3.5 font-semibold tracking-wide p-2 transition-all duration-300 ease-in-out hover:bg-[#ffffff7a]
               rounded-md`}
               >
                 <div>{React.createElement(menu?.icon, { size: "26" })}</div>

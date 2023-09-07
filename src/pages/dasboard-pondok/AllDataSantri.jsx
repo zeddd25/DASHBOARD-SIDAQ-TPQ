@@ -1,15 +1,11 @@
 import { useState } from "react";
 import ModalAdd from "../../components/modal/ModalAdd";
-import { ButtonCustom, RecapInfo } from "../../components/ui";
+import { RecapInfo } from "../../components/ui";
 import { useStateContext } from "../../context/StateContext";
 import { TbAlertCircle, TbEdit, TbSearch, TbTrashFilled } from "react-icons/tb";
 
-const DataUstadz = () => {
+const AllDataSantri = () => {
   const [showModal, setShowModal] = useState(false);
-
-  const handleUpdate = () => {
-    setShowModal(true);
-  };
 
   const handleCancel = () => {
     setShowModal(false);
@@ -24,7 +20,7 @@ const DataUstadz = () => {
           open ? "md:pl-[261px]" : "md:pl-[82px]"
         } duration-500`}
       >
-        <RecapInfo title={"Data Ustadz"} />
+        <RecapInfo title={"Data Santri"} />
         <div className="relative mr-5 overflow-x-auto">
           <div className="flex items-center justify-between pb-4 bg-white">
             <label htmlFor="table-search" className="sr-only">
@@ -41,14 +37,6 @@ const DataUstadz = () => {
                 placeholder="cari Santri berdasarkan nama atau email"
               />
             </div>
-            <ButtonCustom
-              value={"Tambah Ustadz"}
-              type="submit"
-              eventOnClick={handleUpdate}
-              className={
-                "bg-[#66BF60] transition-all duration-300 ease-in-out hover:bg-[#66bf60ab] px-7 py-2 rounded-md text-white"
-              }
-            />
           </div>
           <table className="w-full text-sm text-left text-gray-500">
             <thead className="text-xs text-white tracking-wider uppercase bg-gradient-to-r from-[#2FBFE7] to-[#66BF60]">
@@ -57,7 +45,7 @@ const DataUstadz = () => {
                   No
                 </th>
                 <th scope="col" className="px-6 py-5">
-                  NAMA USTADZ
+                  NAMA SANTRI
                 </th>
                 <th scope="col" className="px-6 py-5">
                   Position
@@ -84,11 +72,11 @@ const DataUstadz = () => {
                     />
                   </div>
                   <div className="pl-3">
-                    <h1 className="text-sm font-semibold">Ustadz</h1>
+                    <h1 className="text-sm font-semibold">Muhamad Andaru</h1>
                     <h3 className="font-normal">andaru.cuaks@gmail.com</h3>
                   </div>
                 </th>
-                <td className="px-6 py-4">Ustadz</td>
+                <td className="px-6 py-4">Santri</td>
                 <td className="px-6 py-4">
                   <div className="flex items-center">
                     <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
@@ -116,11 +104,11 @@ const DataUstadz = () => {
                     />
                   </div>
                   <div className="pl-3">
-                    <h1 className="text-base font-semibold">Muhamad Andaru</h1>
+                    <h1 className="text-base font-semibold">Santri</h1>
                     <h3 className="font-normal">andaru.cuaks@gmail.com</h3>
                   </div>
                 </th>
-                <td className="px-6 py-4">Ustadz</td>
+                <td className="px-6 py-4">Designer</td>
                 <td className="px-6 py-4">
                   <div className="flex items-center">
                     <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
@@ -154,7 +142,7 @@ const DataUstadz = () => {
                     </h3>
                   </div>
                 </th>
-                <td className="px-6 py-4">Ustadz</td>
+                <td className="px-6 py-4">Santri</td>
                 <td className="px-6 py-4">
                   <div className="flex items-center">
                     <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
@@ -188,7 +176,7 @@ const DataUstadz = () => {
                     </h3>
                   </div>
                 </th>
-                <td className="px-6 py-4">Ustadz</td>
+                <td className="px-6 py-4">Santri</td>
                 <td className="px-6 py-4">
                   <div className="flex items-center">
                     <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
@@ -222,7 +210,7 @@ const DataUstadz = () => {
                     </h3>
                   </div>
                 </th>
-                <td className="px-6 py-4">Ustadz</td>
+                <td className="px-6 py-4">Santri</td>
                 <td className="px-6 py-4">
                   <div className="flex items-center">
                     <div className="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div>{" "}
@@ -246,4 +234,4 @@ const DataUstadz = () => {
   );
 };
 
-export default DataUstadz;
+export default AllDataSantri;

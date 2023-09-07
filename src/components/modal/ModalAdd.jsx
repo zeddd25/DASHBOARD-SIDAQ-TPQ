@@ -46,6 +46,7 @@ const ModalAdd = ({ onClose }) => {
 
     const { name, email, password, gender, tgl_lahir, gambar } = formData;
 
+    // Validasi isi inputan
     if (
       name === "" ||
       email === "" ||
@@ -56,6 +57,32 @@ const ModalAdd = ({ onClose }) => {
       gambar === null
     ) {
       toast.error("Pastikan isi semua inputan!", { toastId: "error" });
+      return;
+    }
+
+    // Validasi panjang kata sandi
+    if (password.length < 8) {
+      toast.error("Kata sandi harus terdiri dari minimal 8 karakter!", {
+        toastId: "error",
+      });
+      return;
+    }
+
+    // Validasi ukuran file gambar
+    const maxFileSizeMB = 5; // Ukuran maksimal dalam MB
+    if (gambar.size > maxFileSizeMB * 1024 * 1024) {
+      toast.error(`Ukuran file gambar harus kurang dari ${maxFileSizeMB} MB!`, {
+        toastId: "error",
+      });
+      return;
+    }
+
+    // Validasi format file gambar
+    const allowedImageFormats = ["image/jpeg", "image/png", "image/jpg"];
+    if (!allowedImageFormats.includes(gambar.type)) {
+      toast.error("Format file gambar harus berupa JPEG, JPG atau PNG!", {
+        toastId: "error",
+      });
       return;
     }
 
@@ -84,7 +111,9 @@ const ModalAdd = ({ onClose }) => {
       })
       .catch((error) => {
         console.log(error);
-        toast.error("Pendaftaran gagal. Silakan coba lagi nanti!", { toastId: "error" });
+        toast.error("Pendaftaran gagal. Silakan coba lagi nanti!", {
+          toastId: "error",
+        });
       })
       .finally(() => {
         setIsLoading(false);
@@ -103,18 +132,20 @@ const ModalAdd = ({ onClose }) => {
             className="p-5 bg-transparent flex flex-col gap-2 rounded-xl text-center"
             onSubmit={handleFormSubmit}
           >
-            <div className="w-fullflex flex-col items-center mb-5">
+            <div className="w-fullflex flex-col items-center mb-">
               <h1 className="text-4xl font-extrabold mb-2 text-[#333333]">
-                Bismillah!
+                بسم الله الرحمن الرحيم
               </h1>
-              <div className="flex justify-center gap-4 items-center">
-              <h1 className="text-lg font-medium">Daftar Ustadz</h1>
+              <div className="flex justify-center gap-1 mt-4 items-center">
+                <h1 className="text-lg font-semibold tracking-wider text-[#4F4F4F]">
+                  Daftarkan Ustadz
+                </h1>
                 <img src="../../src/assets/images/ustadz.png" />
               </div>
             </div>
             <InputCustom
               name="name"
-              placeholder={"Nama"}
+              placeholder={"Muhamad Sholeh"}
               onChange={handleInputChange}
               className={
                 "focus:ring-0 border-none outline-none w-full md:w-[90%] text-sm font-semibold py-3 px-4"
@@ -123,7 +154,7 @@ const ModalAdd = ({ onClose }) => {
             />
             <InputCustom
               type="email"
-              placeholder={"Email"}
+              placeholder={"muhamadsholeh@gmail.com"}
               name="email"
               onChange={handleInputChange}
               className={
@@ -133,17 +164,18 @@ const ModalAdd = ({ onClose }) => {
             />
             <InputCustom
               type="password"
-              placeholder={"Kata Sandi"}
+              placeholder={"Kata Sandi 8+"}
               name="password"
               onChange={handleInputChange}
               className={
                 "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
               }
-              icon={<TbLock className="text-3xl font-semibold text-[#6c7077]" />}
+              icon={
+                <TbLock className="text-3xl font-semibold text-[#6c7077]" />
+              }
             />
             <InputCustom
-              placeholder={"2000-10-10"}
-              // type="date"
+              placeholder={"2003/25/10"}
               name="tgl_lahir"
               onChange={handleInputChange}
               placeholderImage={selectedFileName}
@@ -158,7 +190,7 @@ const ModalAdd = ({ onClose }) => {
                 value={formData.gender}
                 onChange={handleInputChange}
                 className={
-                  "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
+                  "text-sm text-[#6c7077] font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
                 }
               >
                 <option value="Pilih jenis kelamin">Pilih jenis kelamin</option>
@@ -170,7 +202,9 @@ const ModalAdd = ({ onClose }) => {
               type="file"
               name={"gambar"}
               onChange={handleFileChange}
-              placeholder={selectedFileName ? selectedFileName : "Uploud Foto Wajah"}
+              placeholder={
+                selectedFileName ? selectedFileName : "Uploud Foto Wajah"
+              }
               className={
                 "text-sm text-[#9CA3AF] font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4 appearance-none cursor-pointer"
               }
@@ -180,11 +214,9 @@ const ModalAdd = ({ onClose }) => {
               value={isLoading ? "Sedang proses..." : "Daftar"}
               type="submit"
               disabled={isLoading}
-              className={
-                `w-full bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 md:py-3 hover:bg-gradient-to-l hover:from-[#2FBFE7] hover:to-[#66BF60] ${
-                  isLoading ? 'opacity-60 cursor-not-allowed' : ''
-                } transition-all duration-300 ease-in-out transform hover:scale-105`
-              }
+              className={`w-full bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 md:py-3 hover:bg-gradient-to-r hover:from-[#2FBFE7] hover:to-[#66BF60] ${
+                isLoading ? "opacity-60 cursor-not-allowed" : ""
+              } transition-all duration-300 ease-in-out transform hover:scale-105`}
             />
           </form>
         </div>

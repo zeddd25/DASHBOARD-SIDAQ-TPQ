@@ -8,16 +8,16 @@
   border-radius: 50px;
   background: linear-gradient(
     135deg,
-    #66bf60,
-    #2fbfe7
+    #00E676,
+    #673AB7
   ); /* Ganti dengan warna yang diinginkan */
 }
 
 .swal2-popup .swal2-actions .swal2-confirm:not([disabled]):hover {
   background: linear-gradient(
     135deg,
-    #2fbfe7,
-    #66bf60
+    #673AB7,
+    #00E676
   ); /* Gradient dari hijau tua ke biru tua pada hover */
 }
 
@@ -32,7 +32,7 @@
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  color: #66bf60;
+  color: #00E676;
   box-shadow: calc(1 * var(--d)) calc(0 * var(--d)) 0 0,
     calc(0.707 * var(--d)) calc(0.707 * var(--d)) 0 1px,
     calc(0 * var(--d)) calc(1 * var(--d)) 0 2px,

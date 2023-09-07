@@ -18,6 +18,8 @@ import {
 } from "../pages/dashboard-staff-ustadz";
 import { Pondok, Profile as PondokProfile } from "../pages/dasboard-pondok";
 import DataUstadz from "../pages/dasboard-pondok/DataUstadz";
+import AllDataSantri from "../pages/dasboard-pondok/AllDataSantri";
+import PrivateRoute from "./PrivateRoute";
 
 const Routing = () => {
   const { showModal, setShowModal } = useStateContext();
@@ -36,9 +38,17 @@ const Routing = () => {
       <Header handleLogoutClick={handleLogoutClick} />
       <Routes>
         {/* PONDOK */}
-        <Route path="/pondok" element={<Pondok />} />
+        <Route
+          path="/dashboard/pondok"
+          element={
+            <PrivateRoute>
+              <Pondok />
+            </PrivateRoute>
+          }
+        />
         <Route path="/profile/pondok" element={<PondokProfile />} />
         <Route path="/data-ustadz/pondok" element={<DataUstadz />} />
+        <Route path="/data-santri/pondok" element={<AllDataSantri />} />
         {/* SANTRI */}
         <Route path="/santri" element={<Santri />} />
         <Route path="/profile/santri" element={<SantriProfile />} />

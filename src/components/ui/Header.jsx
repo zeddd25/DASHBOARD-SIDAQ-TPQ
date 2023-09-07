@@ -25,7 +25,7 @@ const Header = ({ handleLogoutClick }) => {
         icon={<RiLogoutCircleRLine className="hidden text-xl md:block" />}
         eventOnClick={handleLogoutClick}
         className={
-          " bg-[#66BF60] flex justify-evenly items-center text-white text-sm font-semibold w-32 h-10 rounded-lg hover:bg-[#66bf60da]"
+          " bg-[#66BF60] flex justify-evenly items-center text-white text-sm w-32 h-10 rounded-lg transition-all duration-300 ease-in-out hover:bg-[#66bf60ad]"
         }
       />
     </div>
