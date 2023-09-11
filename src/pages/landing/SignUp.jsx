@@ -136,31 +136,31 @@ const SignUp = () => {
       return;
     }
 
-       // Validasi panjang kata sandi
-       if (password.length < 8) {
-        toast.error("Kata sandi harus terdiri dari minimal 8 karakter!", {
-          toastId: "error",
-        });
-        return;
-      }
-  
-      // Validasi ukuran file gambar
-      const maxFileSizeMB = 5; // Ukuran maksimal dalam MB
-      if (gambar.size > maxFileSizeMB * 1024 * 1024) {
-        toast.error(`Ukuran file gambar harus kurang dari ${maxFileSizeMB} MB!`, {
-          toastId: "error",
-        });
-        return;
-      }
-  
-      // Validasi format file gambar
-      const allowedImageFormats = ["image/jpeg", "image/png", "image/jpg"];
-      if (!allowedImageFormats.includes(gambar.type)) {
-        toast.error("Format file gambar harus berupa JPEG, JPG atau PNG!", {
-          toastId: "error",
-        });
-        return;
-      }
+    // Validasi panjang kata sandi
+    if (password.length < 8) {
+      toast.error("Kata sandi harus terdiri dari minimal 8 karakter!", {
+        toastId: "error",
+      });
+      return;
+    }
+
+    // Validasi ukuran file gambar
+    const maxFileSizeMB = 5; // Ukuran maksimal dalam MB
+    if (gambar.size > maxFileSizeMB * 1024 * 1024) {
+      toast.error(`Ukuran file gambar harus kurang dari ${maxFileSizeMB} MB!`, {
+        toastId: "error",
+      });
+      return;
+    }
+
+    // Validasi format file gambar
+    const allowedImageFormats = ["image/jpeg", "image/png", "image/jpg"];
+    if (!allowedImageFormats.includes(gambar.type)) {
+      toast.error("Format file gambar harus berupa JPEG, JPG atau PNG!", {
+        toastId: "error",
+      });
+      return;
+    }
 
     setIsLoading(true);
 
@@ -205,7 +205,7 @@ const SignUp = () => {
         <div className="custom-loader m-auto" />
       ) : (
         <section className="font-poppins h-screen relative flex items-center">
-          <div className="w-[50%] h-full overflow-hidden bg-gradient-to-b from-[#00E676] to-[#673AB7] hidden lg:block">
+          <div className="w-[50%] h-full overflow-hidden bg-gradient-to-b from-green-400 to-purple-600 hidden lg:block">
             <div className="mt-[15px] ml-[25px] absolute">
               <img
                 style={{ height: 50 }}
@@ -213,6 +213,7 @@ const SignUp = () => {
                 alt="../public/.png"
               />
             </div>
+
             <div className="text-white w-[358px] mt-[268px] ml-[108px] absolute">
               <h1 className="font-semibold text-6xl tracking-widest">
                 Sidaq TPQ Indonesia
@@ -224,6 +225,14 @@ const SignUp = () => {
                 Rumah/Pondok Qur’an di 114 kawasan untuk mensurgakan <br />{" "}
                 Indonesia.
               </h1>
+            </div>
+            <div className="mt-[960px] ml-[25px] absolute text-slate-50 tracking-wide flex flex-col items-center gap-1">
+              <h1 className="underline cursor-pointer z-50">partnership</h1>
+              <img
+                style={{ height: 50 }}
+                src="../src/assets/images/logo-pondok-it.svg"
+                alt="../public/.png"
+              />
             </div>
             <img
               className="opacity-[10%] h-full w-full object-cover"
@@ -340,14 +349,14 @@ const SignUp = () => {
                 value={"Sign Up"}
                 type="submit"
                 className={
-                  "w-full bg-gradient-to-tl from-[#673AB7] to-[#00E676] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 md:py-3 hover:bg-gradient-to-tl hover:to-[#00e677d5] hover:from-[#683ab7dc]"
+                  "w-full bg-gradient-to-r from-[#9333ea] to-[#4ade80] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 md:py-3 hover:bg-gradient-to-tl hover:from-[#4ade80b4] hover:to-[#9233eabe] active:scale-105"
                 }
               />
               <div className="text-[#667085] font-medium text-sm">
                 <h1>
                   Sudah memiliki akun Masjid?{" "}
                   <Link to={"/"}>
-                    <span className="text-[#00E676] font-bold text-sm hover:underline hover:underline-offset-2">
+                    <span className="text-[#4ade80] font-bold text-sm hover:underline hover:underline-offset-2">
                       Masuk
                     </span>
                   </Link>

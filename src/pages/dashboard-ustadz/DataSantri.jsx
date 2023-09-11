@@ -14,28 +14,28 @@ const DataSantri = () => {
       <RecapInfo title={"Input Data Santri"} />
       <div className="flex flex-col w-[500px] m-auto">
         <InputSearch />
-        <div className="mt-2 border border-t-[#66BF60] border-l-[#66BF60] border-r-[#66BF60] w-full rounded-t-lg p-3 font-semibold tracking-wider">
+        <div className="mt-2 border border-t-[#4ade80] border-l-[#4ade80] border-r-[#4ade80] w-full rounded-t-lg p-3 font-semibold tracking-wider">
           <h1>Amal sholeh</h1>
         </div>
-        <div className="border border-[#66BF60] w-full rounded-b-lg p-4 flex flex-wrap justify-between gap-4">
+        <div className="border border-[#4ade80] w-full rounded-b-lg p-4 flex flex-wrap justify-between gap-4">
 
         <div>
         <h3 className="mb-2">Hafalan</h3>
-        <select name="" id="" className="ring-1 ring-[#66BF60] bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none">
+        <select name="" id="" className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none">
             <option value="">27 Juz</option>
         </select>
         </div>
 
         <div>
         <h3 className="mb-2">Mutqin</h3>
-        <select name="" id="" className="ring-1 ring-[#66BF60] bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none">
+        <select name="" id="" className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none">
             <option value="">20 Juz</option>
         </select>
         </div>
 
         <div>
         <h3 className="mb-2">Kedisplinan</h3>
-        <select name="" id="" className="ring-1 ring-[#66BF60] bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none">
+        <select name="" id="" className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none">
             <option value="">80</option>
         </select>
         </div>
@@ -43,7 +43,7 @@ const DataSantri = () => {
 
         <div className="w-full">
         <h3 className="mb-2">Amanah</h3>
-        <select name="" id="" className="ring-1 ring-[#66BF60] bg-slate-50 w-full py-2 px-1 rounded-lg outline-none">
+        <select name="" id="" className="ring-1 ring-[#4ade80] bg-slate-50 w-full py-2 px-1 rounded-lg outline-none">
             <option value="">DKM MASJID</option>
         </select>
         </div>
@@ -60,7 +60,7 @@ const DataSantri = () => {
             value={"Kirimkan"}
             type="submit"
             className={
-              "bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 md:py-3 hover:bg-gradient-to-l hover:from-[#2FBFE7] hover:to-[#66BF60]"
+              "bg-gradient-to-r from-[#9333ea] to-[#4ade80] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 md:py-3 hover:bg-gradient-to-l hover:from-[#9333ea] hover:to-[#4ade80]"
             }
           />
       </div>

@@ -1,12 +1,13 @@
-import { Navigate } from "react-router-dom";
+import { Route, Navigate } from "react-router-dom";
 
-const PrivateRoute = ({ children }) => {
-  const token = sessionStorage.getItem("token");
+const PrivateRoute = ({ element, ...rest }) => {
+  const token = localStorage.getItem("token"); // Mengambil token dari localStorage
 
-  return token ? (
-    children
-  ) : (
-    <Navigate to="/" replace />
+  return (
+    <Route
+      {...rest}
+      element={token ? element : <Navigate to="/login" replace />} // Mengizinkan akses jika token ada, jika tidak, arahkan ke halaman login
+    />
   );
 };
 

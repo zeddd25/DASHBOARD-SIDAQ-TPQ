@@ -17,7 +17,7 @@ const LineChart = () => {
         label: "Progress Hafalan Harian",
         data: weeklyProgress,
         fill: false,
-        borderColor: "#2FBFE7",
+        borderColor: "#9333ea",
         tension: 0.1,
       },
     ],

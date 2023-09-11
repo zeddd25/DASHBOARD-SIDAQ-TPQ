@@ -24,34 +24,39 @@ const DataUstadz = () => {
           open ? "md:pl-[261px]" : "md:pl-[82px]"
         } duration-500`}
       >
-        <RecapInfo title={"Data Ustadz"} />
+        <RecapInfo title={"Data Ustadz"} className={"mt-14"}/>
         <div className="relative mr-5 overflow-x-auto">
-          <div className="flex items-center justify-between pb-4 bg-white">
-            <label htmlFor="table-search" className="sr-only">
-              Search
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                <TbSearch className="text-lg"/>
-              </div>
+          <div className="flex items-center justify-between pb-4">
+            <div className="relative  flex w-96 flex-wrap items-stretch">
               <input
-                type="text"
-                id="table-search-users"
-                className="block p-3 pl-10 text-sm text-gray-900 border-2 border-[#2FBFE7] outline-none rounded-md w-96 bg-gray-50  "
-                placeholder="cari Santri berdasarkan nama atau email"
+                type="search"
+                className="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out  focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(147, 51, 234)] focus:outline-none"
+                placeholder="Search"
+                aria-label="Search"
+                aria-describedby="button-addon1"
               />
+
+              <button
+                className="relative z-[2] flex items-center rounded-r bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight bg-purple-600 text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+                type="button"
+                id="button-addon1"
+                data-te-ripple-init
+                data-te-ripple-color="light"
+              >
+                <TbSearch className="text-lg" />
+              </button>
             </div>
             <ButtonCustom
               value={"Tambah Ustadz"}
               type="submit"
               eventOnClick={handleUpdate}
               className={
-                "bg-[#66BF60] transition-all duration-300 ease-in-out hover:bg-[#66bf60ab] px-7 py-2 rounded-md text-white"
+                "bg-green-400 transition-all duration-300 ease-in-out hover:bg-[#4ade80b4] px-7 py-2 rounded-md text-white"
               }
             />
           </div>
           <table className="w-full text-sm text-left text-gray-500">
-            <thead className="text-xs text-white tracking-wider uppercase bg-gradient-to-r from-[#2FBFE7] to-[#66BF60]">
+            <thead className="text-xs text-white tracking-wider uppercase bg-gradient-to-r from-purple-600 to-green-400">
               <tr>
                 <th scope="col" className="px-3">
                   No
@@ -60,7 +65,7 @@ const DataUstadz = () => {
                   NAMA USTADZ
                 </th>
                 <th scope="col" className="px-6 py-5">
-                  Position
+                  Tanggal Lahir 
                 </th>
                 <th scope="col" className="px-6 py-5">
                   Status
@@ -88,7 +93,7 @@ const DataUstadz = () => {
                     <h3 className="font-normal">andaru.cuaks@gmail.com</h3>
                   </div>
                 </th>
-                <td className="px-6 py-4">Ustadz</td>
+                <td className="px-8 py-4">2000-02-11</td>
                 <td className="px-6 py-4">
                   <div className="flex items-center">
                     <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
@@ -97,140 +102,6 @@ const DataUstadz = () => {
                 </td>
                 <td className="px-6 py-4 gap-2">
                   <div className="flex text-[#4F4F4F]">
-                    <TbAlertCircle className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
-                    <TbEdit className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
-                    <TbTrashFilled className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
-                  </div>
-                </td>
-              </tr>
-              <tr className="bg-white border-b hover:bg-gradient-to-r hover:bg-slate-50">
-                <td className="w-4 p-4">2</td>
-                <th
-                  scope="row"
-                  className="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                  <div className="w-[45px] h-[45px] overflow-hidden rounded-full">
-                    <img
-                      src="../../src/assets/images/foto-formal.jpeg"
-                      alt="Jese image"
-                    />
-                  </div>
-                  <div className="pl-3">
-                    <h1 className="text-base font-semibold">Muhamad Andaru</h1>
-                    <h3 className="font-normal">andaru.cuaks@gmail.com</h3>
-                  </div>
-                </th>
-                <td className="px-6 py-4">Ustadz</td>
-                <td className="px-6 py-4">
-                  <div className="flex items-center">
-                    <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
-                    Aktif
-                  </div>
-                </td>
-                <td className="px-6 py-4 gap-2">
-                  <div className="flex text-[#4F4F4F]">
-                    <TbAlertCircle className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
-                    <TbEdit className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
-                    <TbTrashFilled className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
-                  </div>
-                </td>
-              </tr>
-              <tr className="bg-white border-b hover:bg-gradient-to-r hover:bg-slate-50">
-                <td className="w-4 p-4">3</td>
-                <th
-                  scope="row"
-                  className="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                  <div className="w-[45px] h-[45px] overflow-hidden rounded-full">
-                    <img
-                      src="../../src/assets/images/foto-formal.jpeg"
-                      alt="Jese image"
-                    />
-                  </div>
-                  <div className="pl-3">
-                    <h1 className="text-base font-semibold ">Muhamad Andaru</h1>
-                    <h3 className="font-normal text-gray-500">
-                      andaru.cuaks@gmail.com
-                    </h3>
-                  </div>
-                </th>
-                <td className="px-6 py-4">Ustadz</td>
-                <td className="px-6 py-4">
-                  <div className="flex items-center">
-                    <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
-                    Aktif
-                  </div>
-                </td>
-                <td className="px-6 py-4 gap-2">
-                  <div className="flex text-[#4F4F4F]">
-                    <TbAlertCircle className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
-                    <TbEdit className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
-                    <TbTrashFilled className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
-                  </div>
-                </td>
-              </tr>
-              <tr className="bg-white border-b hover:bg-gradient-to-r hover:bg-slate-50">
-                <td className="w-4 p-4">4</td>
-                <th
-                  scope="row"
-                  className="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                  <div className="w-[45px] h-[45px] overflow-hidden rounded-full">
-                    <img
-                      src="../../src/assets/images/foto-formal.jpeg"
-                      alt="Jese image"
-                    />
-                  </div>
-                  <div className="pl-3">
-                    <h1 className="text-base font-semibold ">Muhamad Andaru</h1>
-                    <h3 className="font-normal text-gray-500">
-                      andaru.cuaks@gmail.com
-                    </h3>
-                  </div>
-                </th>
-                <td className="px-6 py-4">Ustadz</td>
-                <td className="px-6 py-4">
-                  <div className="flex items-center">
-                    <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
-                    Aktif
-                  </div>
-                </td>
-                <td className="px-6 py-4 gap-2">
-                  <div className="flex text-[#4F4F4F]">
-                    <TbAlertCircle className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
-                    <TbEdit className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
-                    <TbTrashFilled className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
-                  </div>
-                </td>
-              </tr>
-              <tr className="bg-white border-b hover:bg-gradient-to-r hover:bg-slate-50">
-                <td className="w-4 p-4">5</td>
-                <th
-                  scope="row"
-                  className="flex items-center px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
-                >
-                  <div className="w-[45px] h-[45px] overflow-hidden rounded-full">
-                    <img
-                      src="../../src/assets/images/foto-formal.jpeg"
-                      alt="Jese image"
-                    />
-                  </div>
-                  <div className="pl-3">
-                    <h1 className="text-base font-semibold ">Muhamad Andaru</h1>
-                    <h3 className="font-normal text-gray-500">
-                      andaru.cuaks@gmail.com
-                    </h3>
-                  </div>
-                </th>
-                <td className="px-6 py-4">Ustadz</td>
-                <td className="px-6 py-4">
-                  <div className="flex items-center">
-                    <div className="h-2.5 w-2.5 rounded-full bg-red-500 mr-2"></div>{" "}
-                    Non aktif
-                  </div>
-                </td>
-                <td className="px-6 py-4 gap-2 text-[#4F4F4F]">
-                  <div className="flex">
                     <TbAlertCircle className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
                     <TbEdit className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
                     <TbTrashFilled className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />

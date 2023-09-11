@@ -36,11 +36,10 @@ const SignIn = () => {
       .then((response) => {
         console.log(JSON.stringify(response.data));
         setIsLoading(true);
-
         if (response.data.token) {
-          sessionStorage.setItem("token", response.data.token);
-          sessionStorage.setItem("name", response.data.user.name);
-          sessionStorage.setItem("role", response.data.user.role);
+          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("name", response.data.user.name);
+          localStorage.setItem("role", response.data.user.role);
 
           const userRole = response.data.user.role;
 
@@ -64,18 +63,8 @@ const SignIn = () => {
       .catch((error) => {
         console.log(error);
         setIsLoading(false);
-        if (error.response) {
-          // Menangani kesalahan HTTP dari server
-          const { data, status } = error.response;
-          if (status === 401) {
-            alert(data.message);
-          } else {
-            alert(`Terjadi kesalahan: ${data.message}`);
-          }
-        } else {
-          // Menangani kesalahan jaringan
-          alert("Terjadi kesalahan jaringan. Mohon cek koneksi internet Anda.");
-        }
+        toast.error("Terjadi Kesalahan Jaringan, Coba Beberapa Saat Lagi!", { toastId: "error" });
+        
       });
   }
 
@@ -85,7 +74,7 @@ const SignIn = () => {
         <div className="custom-loader m-auto" />
       ) : (
         <section className="font-poppins h-screen relative flex items-center">
-          <div className="w-[50%] h-full overflow-hidden bg-gradient-to-b from-[#00E676] to-[#673AB7] hidden lg:block">
+          <div className="w-[50%] h-full overflow-hidden bg-gradient-to-b from-green-400 to-purple-600 hidden lg:block">
             <div className="mt-[15px] ml-[25px] absolute">
               <img
                 style={{ height: 50 }}
@@ -105,6 +94,16 @@ const SignIn = () => {
                 Rumah/Pondok Qur’an di 114 kawasan untuk mensurgakan <br />{" "}
                 Indonesia.
               </h1>
+            </div>
+             <div className="mt-[880px] ml-[25px] absolute text-slate-50 tracking-wide  flex flex-col items-center gap-1">
+              <Link to={"https://pondokit.com/"}>
+              <h1 className="underline cursor-pointer z-50">partnership</h1>
+              </Link>
+              <img
+                style={{ height: 50 }}
+                src="../src/assets/images/logo-pondok-it.svg"
+                alt="../public/.png"
+              />
             </div>
             <img
               className="opacity-[10%] h-full w-full object-cover"
@@ -160,14 +159,14 @@ const SignIn = () => {
                 type="submit"
                 value={"Masuk"}
                 className={
-                  "w-full bg-gradient-to-tl from-[#673AB7] to-[#00E676] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 hover:bg-gradient-to-tl hover:to-[#00e677d5] hover:from-[#683ab7dc]"
+                  "w-full bg-gradient-to-r from-[#9333ea] to-[#4ade80] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 hover:bg-gradient-to-tl hover:from-[#4ade80b4] hover:to-[#9233eabe] active:scale-105"
                 }
               />
               <div className="text-[#667085] font-medium text-sm">
                 <h1>
                   Belum memiliki akun Masjid?{" "}
                   <Link to={"/register"}>
-                    <span className="text-[#00E676] font-bold text-sm hover:underline hover:underline-offset-2">
+                    <span className="text-[#4ade80] font-bold text-sm hover:underline hover:underline-offset-2">
                       Daftar
                     </span>
                   </Link>

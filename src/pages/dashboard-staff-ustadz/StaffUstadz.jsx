@@ -50,7 +50,7 @@ const StaffUstadz = () => {
               </div>
               <RecapInfo title={"Rekapan"} />
               </div>
-              <div className="flex flex-wrap gap-4 lg:justify-start lg:gap-[10.5px]">
+              <div className="flex flex-wrap lg:flex-nowrap gap-4 lg:justify-start lg:gap-[10.5px]">
                 <CardData
                   title={"Amanah"}
                   icon={<img src="../src/assets/images/amanah.png" />}

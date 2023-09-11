@@ -1,223 +1,119 @@
-import React, { useState } from "react";
-import {
-  TbCalendar,
-  TbLock,
-  TbMail,
-  TbPhotoPlus,
-  TbUser,
-  TbUsersGroup,
-  TbVersions,
-} from "react-icons/tb";
-import { ButtonCustom, InputCustom, RecapInfo } from "../../components/ui";
+import { useState } from "react";
+import { ButtonCustom, RecapInfo } from "../../components/ui";
 import { useStateContext } from "../../context/StateContext";
-import instance from "../../services/api";
-import { ToastContainer, toast } from "react-toastify"; // Import ToastContainer dan toast
-import "react-toastify/dist/ReactToastify.css"; // Import CSS Toastify
+import { TbAlertCircle, TbEdit, TbSearch, TbTrashFilled } from "react-icons/tb";
+import ModalAddSantri from "./ModalAddSantri";
 
 const TambahSantri = () => {
-  const [selectedFileName, setSelectedFileName] = useState("");
-  const [formData, setFormData] = useState({
-    name: "",
-    gambar: null,
-    email: "",
-    password: "",
-    role: "santri_pondok",
-    tgl_lahir: "",
-    gender: "Pilih jenis kelamin",
-    angkatan: "",
-  });
-  const [isLoading, setIsLoading] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
+  const handleUpdate = () => {
+    setShowModal(true);
   };
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0];
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      gambar: file,
-    }));
-    setSelectedFileName(file.name);
+  const handleCancel = () => {
+    setShowModal(false);
   };
-
-  function handleFormSubmit(e) {
-    e.preventDefault();
-
-    const { name, email, password, gender, tgl_lahir, gambar, angkatan } = formData;
-
-    if (
-      name === "" ||
-      email === "" ||
-      password === "" ||
-      formData.role === "" ||
-      gender === "Pilih jenis kelamin" ||
-      tgl_lahir === "" ||
-      angkatan === "" ||
-      gambar === null
-    ) {
-      toast.error("Pastikan isi semua inputan!"); // Menggunakan toast.error
-      return;
-    }
-
-    setIsLoading(true);
-
-    const data = new FormData();
-    data.append("name", name);
-    data.append("email", email);
-    data.append("password", password);
-    data.append("role", formData.role);
-    data.append("gender", gender);
-    data.append("tgl_lahir", tgl_lahir);
-    data.append("gambar", gambar);
-    data.append("angkatan", angkatan);
-
-    const authToken = localStorage.getItem("token");
-
-    instance
-      .post("/register/santri", data, {
-        headers: {
-          Authorization: `Bearer ${authToken}`,
-        },
-      })
-      .then((response) => {
-        console.log(JSON.stringify(response.data));
-        toast.success("Pendaftaran akun Anda berhasil!"); // Menggunakan toast.success
-      })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Pendaftaran gagal. Silakan coba lagi nanti!"); // Menggunakan toast.error
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }
 
   const { open } = useStateContext();
 
   return (
-    <div
-      className={`min-h-screen py-5 font-poppins ${
-        open ? "md:pl-[261px]" : "md:pl-[82px]"
-      } duration-500`}
-    >
-      <RecapInfo title={"Input Tambah Santri"} />
+    <>
+      <div
+        className={`min-h-screen py-5 font-poppins ${
+          open ? "md:pl-[261px]" : "md:pl-[82px]"
+        } duration-500`}
+      >
+        <RecapInfo title={"Data Santri"} />
+        <div className="relative mr-5 overflow-x-auto">
+          <div className="flex items-center justify-between pb-4">
+          <div className="relative flex w-96 flex-wrap items-stretch">
+              <input
+                type="search"
+                className="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out  focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(147, 51, 234)] focus:outline-none"
+                placeholder="Search"
+                aria-label="Search"
+                aria-describedby="button-addon1"
+              />
 
-      <div className="flex flex-col w-[900px] m-auto">
-        <div className="border border-t-[#66BF60] border-l-[#66BF60] border-r-[#66BF60] w-full rounded-t-lg p-4 font-semibold tracking-wider">
-          <h1>Data Santri</h1>
+              <button
+                className="relative z-[2] flex items-center rounded-r bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight bg-purple-600 text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+                type="button"
+                id="button-addon1"
+                data-te-ripple-init
+                data-te-ripple-color="light"
+              >
+                <TbSearch className="text-lg" />
+              </button>
+            </div>
+            <ButtonCustom
+              value={"Tambah Santri"}
+              type="submit"
+              eventOnClick={handleUpdate}
+              className={
+                "bg-green-400 transition-all duration-300 ease-in-out hover:bg-[#4ade80b4] px-7 py-2 rounded-md text-white"
+              }
+            />
+          </div>
+          <table className="w-full text-sm text-left text-gray-500">
+            <thead className="text-xs text-white tracking-wider uppercase bg-gradient-to-r from-purple-600 to-green-400">
+              <tr>
+                <th scope="col" className="px-3">
+                  No
+                </th>
+                <th scope="col" className="px-6 py-5">
+                  NAMA SANTRI
+                </th>
+                <th scope="col" className="px-6 py-5">
+                  Tanggal Lahir
+                </th>
+                <th scope="col" className="px-6 py-5">
+                  Status
+                </th>
+                <th scope="col" className="px-9 py-5">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="bg-white border-b text-gray-700 hover:bg-gradient-to-r hover:bg-slate-50">
+                <td className="w-4 p-4">1</td>
+                <th
+                  scope="row"
+                  className="flex items-center px-6 py-4 whitespace-nowrap"
+                >
+                  <div className="w-[45px] h-[45px] overflow-hidden rounded-full">
+                    <img
+                      src="../../src/assets/images/foto-formal.jpeg"
+                      alt="Jese image"
+                    />
+                  </div>
+                  <div className="pl-3">
+                    <h1 className="text-sm font-semibold">Muhamad Andaru</h1>
+                    <h3 className="font-normal">andaru.cuaks@gmail.com</h3>
+                  </div>
+                </th>
+                <td className="px-8 py-4">2000-02-11</td>
+                <td className="px-6 py-4">
+                  <div className="flex items-center">
+                    <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2"></div>{" "}
+                    Aktif
+                  </div>
+                </td>
+                <td className="px-6 py-4 gap-2">
+                  <div className="flex text-[#4F4F4F]">
+                    <TbAlertCircle className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
+                    <TbEdit className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
+                    <TbTrashFilled className="text-2xl transition-all duration-300 ease-in-out transform hover:scale-105 cursor-pointer" />
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-
-        <form onSubmit={handleFormSubmit} className="border border-[#66BF60] w-full rounded-b-lg p-4 flex flex-col gap-4">
-          <div>
-            <h3 className="text-sm mb-2">Nama</h3>
-            <InputCustom
-              name="name"
-              onChange={handleInputChange}
-              placeholder={"Nama Santri"}
-              className={
-                "focus:ring-0 border-none outline-none w-full md:w-[90%] text-sm font-semibold py-2 px-4"
-              }
-              icon={<TbUser className="text-2xl text-[#6c7077]" />}
-            />
-          </div>
-          <div>
-            <h3 className="text-sm mb-2">Email</h3>
-            <InputCustom
-              name="email"
-              onChange={handleInputChange}
-              type="email"
-              placeholder={"muhamadsholeh@gmail.com"}
-              className={
-                "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-2 px-4"
-              }
-              icon={<TbMail className="text-2xl text-[#6c7077]" />}
-            />
-          </div>
-          <div>
-            <h3 className="text-sm mb-2">Kata Sandi</h3>
-            <InputCustom
-              type="password"
-              name="password"
-              onChange={handleInputChange}
-              placeholder={"minimal karakter 8+"}
-              className={
-                "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
-              }
-              icon={
-                <TbLock className="text-3xl font-semibold text-[#6c7077]" />
-              }
-            />
-          </div>
-          <div>
-            <h3 className="text-sm mb-2">Tanggal Lahir</h3>
-            <InputCustom
-              name="tgl_lahir"
-              onChange={handleInputChange}
-              placeholder={"2000-10-10"}
-              className={
-                "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
-              }
-              icon={
-                <TbCalendar className="text-3xl font-semibold text-[#6c7077]" />
-              }
-            />
-          </div>
-          <div className="w-full flex items-center justify-between ring-1 ring-[#EEEEEE] rounded-md py-3 px-4">
-            <select
-              name="gender"
-              value={formData.gender}
-              onChange={handleInputChange}
-              className={
-                "text-sm font-semibold focus:ring-0 border-none outline-none w-full "
-              }
-            >
-              <option value="Pilih jenis kelamin">Pilih jenis kelamin</option>
-              <option value="Laki-laki">Laki-laki</option>
-              <option value="Perempuan">Perempuan</option>
-            </select>
-            <TbUsersGroup className="text-3xl font-semibold text-[#6c7077]" />
-          </div>
-          <div>
-            <h3 className="text-sm mb-2">Angkatan</h3>
-            <InputCustom
-              type="number"
-              name="angkatan"
-              onChange={handleInputChange}
-              placeholder={"16"}
-              className={
-                "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
-              }
-              icon={
-                <TbVersions className="text-3xl font-semibold text-[#6c7077]" />
-              }
-            />
-          </div>
-          <InputCustom
-            type="file"
-            name={"gambar"}
-            onChange={handleFileChange}
-            placeholder={selectedFileName ? selectedFileName : "Uploud Foto Wajah"}
-            className={
-              "text-sm text-[#9CA3AF] font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4 appearance-none cursor-pointer"
-            }
-            icon={<TbPhotoPlus className="text-2xl text-[#6c7077]" />}
-          />
-          <ButtonCustom
-            value={"Daftar"}
-            type="submit"
-            className={
-              "w-full bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 md:py-3 hover:bg-gradient-to-l hover:from-[#2FBFE7] hover:to-[#66BF60]"
-            }
-          />
-        </form>
       </div>
-      <ToastContainer /> {/* Tambahkan ToastContainer di komponen Anda */}
-    </div>
+      {showModal && <ModalAddSantri onClose={handleCancel} />}
+    </>
   );
 };
 

@@ -5,7 +5,7 @@ const Context = createContext();
 export const StateContext = ({ children }) => {
   const [showModal, setShowModal] = useState(false);
   const [isShowPopup, setIsShowPopup] = useState(false);
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   return (
     <Context.Provider
       value={{ showModal, setShowModal, isShowPopup, setIsShowPopup,open, setOpen }}

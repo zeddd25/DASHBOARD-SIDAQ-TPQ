@@ -9,8 +9,8 @@ const EditProfile = () => {
 
   // Data profil pengguna
   const [profileData, setProfileData] = useState({
-    name: "Muhamad Sholeh Al Atsary",
-    email: "MuhamadSholeh@gmail.com",
+    name: "Masjid Pemuda Peradaban ",
+    email: "pemudaperadaban@gmail.com",
     password: "********",
     birthDate: "12-10-1994",
   });
@@ -45,7 +45,7 @@ const EditProfile = () => {
         open ? "md:pl-[261px]" : "w-full md:pl-[82px]"
       } duration-500`}
     >
-      <RecapInfo title={"Edit Profile"} />
+      <RecapInfo title={"Edit Profile"} className={"mt-14"}/>
       <div className="mt-auto flex flex-col p-4 max-w-md mx-auto bg-[#F3F4F6] rounded-lg ring-1 ring-[#16151321] shadow-md ">
         <TbCameraFilled className="text-3xl text-black" />
         <div className="w-80 h-80 relative overflow-hidden rounded-full ring-1 ring-[#16151321] mx-auto">
@@ -60,7 +60,7 @@ const EditProfile = () => {
         <div className="text-[#151515] font-semibold flex flex-col value">
           {isEditing ? (
             <div>
-              <label htmlFor="name" className="text-[#66BF60] text-xl mb-2">
+              <label htmlFor="name" className="text-green-400 text-xl mb-2">
                 Nama :
               </label>
               <input
@@ -157,7 +157,7 @@ const EditProfile = () => {
             ) : (
               <button
                 onClick={() => setIsEditing(true)}
-                className="bg-[#66BF60] text-white hover:bg-[#50A451] ring-1 ring-[#66BF60] hover:ring-[#50A451] flex items-center gap-2 py-3 px-5 rounded-lg mt-4 transition duration-300 transform hover:scale-105"
+                className="bg-green-400 text-white font-medium tracking-wide hover:bg-[#4ade80b4] flex items-center gap-2 py-3 px-5 rounded-lg mt-4 transition duration-300 transform hover:scale-105"
               >
                 <TbPencil className="text-xl" />
                 EDIT PROFILE

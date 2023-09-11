@@ -7,7 +7,7 @@ const Header = ({ handleLogoutClick }) => {
 
   return (
     <div
-      className={`font-poppins bg-[#FCFAFA] w-full h-[80px] flex items-center justify-between px-4 ${
+      className={`font-poppins bg-[#FCFAFA] w-full h-[80px] lg:h-[95px] flex items-center justify-between px-4 ${
         open ? "md:pl-[260px]" : "md:pl-20"
       } duration-500`}
     >
@@ -25,7 +25,7 @@ const Header = ({ handleLogoutClick }) => {
         icon={<RiLogoutCircleRLine className="hidden text-xl md:block" />}
         eventOnClick={handleLogoutClick}
         className={
-          " bg-[#66BF60] flex justify-evenly items-center text-white text-sm w-32 h-10 rounded-lg transition-all duration-300 ease-in-out hover:bg-[#66bf60ad]"
+          " bg-green-400 flex justify-evenly items-center text-white text-sm w-32 h-10 rounded-lg transition-all duration-300 ease-in-out hover:bg-[#4ade80b4]"
         }
       />
     </div>

@@ -62,7 +62,7 @@ const BottomBar = () => {
   ];
 
   return (
-    <div className="font-poppins bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] p-2 fixed bottom-0 left-0 w-full flex justify-between md:hidden">
+    <div className="font-poppins bg-gradient-to-r from-green-400 to-purple-600 p-2 fixed bottom-0 left-0 w-full flex justify-between md:hidden">
       {(isSantriPage || isSantriProfilePage || isSantriPengaturanPage) &&
         menusSantri.map((menu, i) => (
           <Link to={menu.link} key={i}>
