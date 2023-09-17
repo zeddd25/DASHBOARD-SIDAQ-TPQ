@@ -24,6 +24,7 @@ const StaffUstadz = () => {
   };
 
   const { open } = useStateContext();
+  const nameUser = localStorage.getItem("name");
 
   return (
     <>
@@ -34,13 +35,16 @@ const StaffUstadz = () => {
         >
         <main>
           <div className="w-full px-4 flex flex-col gap-4 mt-5">
-            <div>
+          <div>
               <h1 className="text-black text-2xl lg:text-4xl font-bold leading-snug">
                 {" "}
-                <span className="text-2xl font-thin">
-                  Assalamualaikum,👋🏻
-                </span>{" "}
-                <br />Staff Muhammad Andaru Danuarta 
+                <div className="flex gap-2 text-2xl font-thin">
+                  <h1>Assalamualaikum,</h1>
+                  <div>
+                    <img src="../src/assets/images/tangan.svg" alt="icon" />
+                  </div>
+                </div>{" "}
+                <h1>Staff {nameUser}</h1>
               </h1>
             </div>
             <div className="w-full">
@@ -48,7 +52,7 @@ const StaffUstadz = () => {
               <div className="w-full mb-3">
                 <InputSearch />
               </div>
-              <RecapInfo title={"Rekapan"} />
+              <RecapInfo title={"Rekapan Santri"} />
               </div>
               <div className="flex flex-wrap lg:flex-nowrap gap-4 lg:justify-start lg:gap-[10.5px]">
                 <CardData

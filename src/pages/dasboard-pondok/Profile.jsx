@@ -74,14 +74,14 @@ const EditProfile = () => {
             </div>
           ) : (
             <div>
-              <h1 className="text-[#66BF60] text-xl mb-2">Nama :</h1>
+              <h1 className="text-primary text-xl mb-2">Nama :</h1>
               <h2 className="text-lg">{profileData.name}</h2>
             </div>
           )}
 
           {isEditing ? (
             <div>
-              <label htmlFor="email" className="text-[#66BF60] text-xl mt-4">
+              <label htmlFor="email" className="text-primary text-xl mt-4">
                 Email :
               </label>
               <input
@@ -95,14 +95,14 @@ const EditProfile = () => {
             </div>
           ) : (
             <div>
-              <h1 className="text-[#66BF60] text-xl mt-4">Email :</h1>
+              <h1 className="text-primary text-xl mt-4">Email :</h1>
               <h2 className="text-lg">{profileData.email}</h2>
             </div>
           )}
 
           {isEditing ? (
             <div>
-              <label htmlFor="password" className="text-[#66BF60] text-xl mt-4">
+              <label htmlFor="password" className="text-primary text-xl mt-4">
                 Kata Sandi :
               </label>
               <input
@@ -116,7 +116,7 @@ const EditProfile = () => {
             </div>
           ) : (
             <div>
-              <h1 className="text-[#66BF60] text-xl mt-4">Kata Sandi :</h1>
+              <h1 className="text-primary text-xl mt-4">Kata Sandi :</h1>
               <h2 className="text-lg">{profileData.password}</h2>
             </div>
           )}
@@ -125,7 +125,7 @@ const EditProfile = () => {
             <div>
               <label
                 htmlFor="birthDate"
-                className="text-[#66BF60] text-xl mt-4"
+                className="text-primary text-xl mt-4"
               >
                 Tanggal Lahir :
               </label>
@@ -140,7 +140,7 @@ const EditProfile = () => {
             </div>
           ) : (
             <div>
-              <h1 className="text-[#66BF60] text-xl mt-4">Tanggal Lahir :</h1>
+              <h1 className="text-primary text-xl mt-4">Tanggal Lahir :</h1>
               <h2 className="text-lg">{profileData.birthDate}</h2>
             </div>
           )}
@@ -149,7 +149,7 @@ const EditProfile = () => {
             {isEditing ? (
               <button
                 onClick={saveProfileChanges}
-                className="bg-[#66BF60] text-white hover:bg-[#50A451] ring-1 ring-[#66BF60] hover:ring-[#50A451] flex items-center gap-2 py-3 px-5 rounded-lg mt-4 transition duration-300 transform hover:scale-105"
+                className="bg-pritext-primary text-white hover:bg-[#50A451] ring-1 ring-pritext-primary hover:ring-[#50A451] flex items-center gap-2 py-3 px-5 rounded-lg mt-4 transition duration-300 transform hover:scale-105"
               >
                 <TbPencil className="text-xl" />
                 SIMPAN

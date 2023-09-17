@@ -14,11 +14,11 @@ const AbsensiSantri = () => {
 
       <div className="flex flex-col mt-4">
         <div className="m-auto flex flex-col">
-          <div className="">
+          <div className="w-full flex justify-between">
             <select
               name=""
               id=""
-              className="ring-1 ring-[#66BF60] rounded-lg px-5 py-2 mb-3 bg-slate-50 border-none outline-none transition-colors"
+              className="ring-1 ring-prito-primary rounded-lg px-5 py-2 mb-3 bg-slate-50 border-none outline-none transition-colors"
             >
               <option value="">Subuh</option>
               <option value="">Dzuhur</option>
@@ -27,7 +27,7 @@ const AbsensiSantri = () => {
               <option value="">Isya</option>
             </select>
           </div>
-          <div className="ring-1 ring-[#66BF60] align-middle inline-block min-w-fit shadow overflow-hidden sm:rounded-xl border-b border-gray-200">
+          <div className="ring-1 ring-prito-primary align-middle inline-block min-w-fit shadow overflow-hidden sm:rounded-xl border-b border-gray-200">
             <table>
               <thead>
                 <tr>
@@ -40,7 +40,7 @@ const AbsensiSantri = () => {
                   <th className="px-20 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs text-gray-500 uppercase tracking-wider">
                     Kehadiran
                   </th>
-                  <th className="text-center px-20 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs text-gray-500 uppercase tracking-wider">
+                  <th className="px-20 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs text-gray-500 uppercase tracking-wider">
                     Tangal
                   </th>
                   <th className="px-20 py-3 border-b border-gray-200 bg-gray-50">
@@ -456,7 +456,7 @@ const AbsensiSantri = () => {
             value={"Kirimkan"}
             type="submit"
             className={
-              "bg-gradient-to-r from-[#2FBFE7] to-[#66BF60] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 md:py-3 hover:bg-gradient-to-l hover:from-[#2FBFE7] hover:to-[#66BF60]"
+              "bg-gradient-to-r from-secondary to-primary text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 md:py-3 hover:bg-gradient-to-r hover:from-[#9233eabe] hover:to-[#4ade80b4] transition-all duration-300 ease-in-out active:scale-105"
             }
           />
         </div>

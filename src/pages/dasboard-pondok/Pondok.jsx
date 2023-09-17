@@ -9,8 +9,6 @@ import { TbEdit } from "react-icons/tb";
 import { CardData, RecapInfo } from "../../components/ui";
 import ModalCustom from "../../components/modal/ModalCustom";
 import { useState } from "react";
-import InputSearch from "../../components/ui/InputSearch";
-import SantriData from "./SantriData";
 
 const Pondok = () => {
   const [showModal, setShowModal] = useState(false);
@@ -24,6 +22,7 @@ const Pondok = () => {
   };
 
   const { open } = useStateContext();
+  const nameUser = localStorage.getItem("name");
 
   return (
     <>
@@ -33,34 +32,36 @@ const Pondok = () => {
         } duration-500`}
       >
         <main>
-          <div className="w-full px-4 flex flex-col gap-4 mt-3">
+          <div className="w-full px-4 flex flex-col gap-4 mt-5">
             <div>
               <h1 className="text-black text-2xl lg:text-4xl font-bold leading-snug">
                 {" "}
-                <span className="text-2xl font-thin">
-                  Assalamualaikum,👋🏻
-                </span>{" "}
-                <br />
-                Masjid Pemuda Peradaban
+                <div className="flex gap-2 text-2xl font-thin">
+                  <h1>Assalamualaikum,</h1>
+                  <div>
+                    <img src="../src/assets/images/tangan.svg" alt="icon" />
+                  </div>
+                </div>{" "}
+                <h1>{nameUser}</h1>
               </h1>
             </div>
             <div className="w-full">
-              <RecapInfo title={"Rekapan"} />
+              <RecapInfo title={"Rekapan Anda"} />
               <div className="flex flex-wrap lg:flex-nowrap gap-4 lg:justify-start lg:gap-[10.5px]">
                 <CardData
                   title={"Ustadz"}
-                  icon={<img src="../src/assets/images/ustadz.png" />}
+                  icon={<img src="../src/assets/images/ustadz.svg" />}
                   Information={"33"}
                 />
                 <CardData
                   title={"Santri"}
                   icon={
-                    <img src="../src/assets/images/santri.png" alt="icon" />
+                    <img src="../src/assets/images/santri.svg" alt="icon" />
                   }
                   Information={"102"}
                 />
                 <CardData
-                  title={"Bangunan"}
+                  title={"Divisi"}
                   icon={
                     <img src="../src/assets/images/bangunan.png" alt="icon" />
                   }
@@ -70,7 +71,7 @@ const Pondok = () => {
                   title={"Fundraising"}
                   icon={
                     <img
-                      src="../src/assets/images/Fundraising.png"
+                      src="../src/assets/images/fundraising.svg"
                       alt="icon"
                     />
                   }
@@ -86,7 +87,7 @@ const Pondok = () => {
                 />
                 <CardData
                   title={"Saldo"}
-                  icon={<img src="../src/assets/images/saldo.png" alt="icon" />}
+                  icon={<img src="../src/assets/images/saldo.svg" alt="icon" />}
                   Information={"22.251.529,00 Rupiah"}
                 />
               </div>

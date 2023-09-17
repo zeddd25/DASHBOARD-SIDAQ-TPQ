@@ -1,5 +1,9 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import { Pengaturan, Santri, Profile as SantriProfile } from "../pages/dashboard-santri";
+import {
+  Pengaturan,
+  Santri,
+  Profile as SantriProfile,
+} from "../pages/dashboard-santri";
 import {
   Ustadz,
   Profile as UstadzProfile,
@@ -24,7 +28,12 @@ import {
   Profile as PondokProfile,
 } from "../pages/dasboard-pondok";
 import DataUstadz from "../pages/dasboard-pondok/DataUstadz";
-import { Pusat, Profile as PusatProfile } from "../pages/dashboard-pusat";
+import {
+  Information,
+  MasjidData,
+  Pusat,
+  Profile as PusatProfile,
+} from "../pages/dashboard-pusat";
 
 const PrivateRoute = ({ element }) => {
   const token = localStorage.getItem("token"); // Mengambil token dari localStorage
@@ -50,21 +59,23 @@ const Routing = () => {
         {/* PUSAT */}
         <Route path="/pusat/*" element={<Pusat />} />
         <Route path="/profile/pusat" element={<PusatProfile />} />
+        <Route path="/informasi/pusat" element={<Information />} />
+        <Route path="/data-masjid/pusat" element={<MasjidData />} />
         {/* PONDOK */}
         {/* <Route path="/pondok/*" element={<PrivateRoute element={<Pondok />} />} /> */}
-        <Route path="/pondok/*" element={<Pondok />} /> 
+        <Route path="/pondok/*" element={<Pondok />} />
         <Route path="/profile/pondok" element={<PondokProfile />} />
         <Route path="/data-ustadz/pondok" element={<DataUstadz />} />
         <Route path="/data-santri/pondok" element={<AllDataSantri />} />
         <Route path="/data-Kategori/pondok" element={<Kategori />} />
         {/* SANTRI */}
         {/* <Route path="/santri/*" element={<PrivateRoute element={<Santri />} />} /> */}
-        <Route path="/santri/*" element={<Santri />} /> 
+        <Route path="/santri/*" element={<Santri />} />
         <Route path="/profile/santri" element={<SantriProfile />} />
         <Route path="/pengaturan/santri" element={<Pengaturan />} />
         {/* USTADZ */}
         {/* <Route path="/ustadz/*" element={<PrivateRoute element={<Ustadz />} />} /> */}
-        <Route path="/ustadz/*" element={<Ustadz />} /> 
+        <Route path="/ustadz/*" element={<Ustadz />} />
         <Route path="/profile/ustadz" element={<UstadzProfile />} />
         <Route path="/input-tambah-santri/ustadz" element={<TambahSantri />} />
         <Route path="/input-hafalan-santri/ustadz" element={<Hafalan />} />
@@ -72,7 +83,7 @@ const Routing = () => {
         <Route path="/input-skill-santri/ustadz" element={<SkillSantri />} />
         {/* STAFF USTADZ */}
         {/* <Route path="/staff-ustadz/*" element={<PrivateRoute element={<StaffUstadz />} />} /> */}
-        <Route path="/staff-ustadz/*" element={<StaffUstadz />} /> 
+        <Route path="/staff-ustadz/*" element={<StaffUstadz />} />
         <Route path="/profile/staff-ustadz" element={<StaffProfile />} />
         <Route
           path="/input-absensi-santri/staff-ustadz"

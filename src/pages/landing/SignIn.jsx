@@ -25,6 +25,8 @@ const SignIn = () => {
     data.append("email", email);
     data.append("password", password);
 
+    setIsLoading(true);
+
     const config = {
       method: "post",
       url: "/login",
@@ -40,10 +42,13 @@ const SignIn = () => {
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("name", response.data.user.name);
           localStorage.setItem("role", response.data.user.role);
+          localStorage.setItem("id_admin", response.data.user.id_admin);
 
           const userRole = response.data.user.role;
 
-          if (userRole === "admin_pondok") {
+          if (userRole === "admin_pusat") {
+            navigate("/dashboard/pusat");
+          } else if (userRole === "admin_pondok") {
             navigate("/dashboard/pondok");
           } else if (userRole === "ust_pondok") {
             navigate("/dashboard/ustadz");
@@ -62,9 +67,24 @@ const SignIn = () => {
       })
       .catch((error) => {
         console.log(error);
-        setIsLoading(false);
-        toast.error("Terjadi Kesalahan Jaringan, Coba Beberapa Saat Lagi!", { toastId: "error" });
-        
+        // setIsLoading(false);
+        if (error.response) {
+          // Check for a bad request (HTTP status code 400)
+          if (error.response.status === 403) {
+            const errorMessage = error.response.data.message;
+            toast.error(errorMessage, { toastId: "error" });
+          } else {
+            // Handle other response errors here
+            toast.error("Terjadi Kesalahan pada Respons dari Server!", {
+              toastId: "error",
+            });
+          }
+        } else {
+          // Kesalahan jaringan atau kesalahan lainnya
+          toast.error("Terjadi Kesalahan Jaringan, Coba Beberapa Saat Lagi!", {
+            toastId: "error",
+          });
+        }
       });
   }
 
@@ -82,7 +102,6 @@ const SignIn = () => {
                 alt="../public/.png"
               />
             </div>
-
             <div className="text-white w-[358px] mt-[268px] ml-[108px] absolute">
               <h1 className="font-semibold text-6xl tracking-widest">
                 Sidaq TPQ Indonesia
@@ -95,9 +114,9 @@ const SignIn = () => {
                 Indonesia.
               </h1>
             </div>
-             <div className="mt-[880px] ml-[25px] absolute text-slate-50 tracking-wide  flex flex-col items-center gap-1">
+            <div className="mt-[880px] ml-[25px] absolute text-slate-50 tracking-wide  flex flex-col items-center gap-1">
               <Link to={"https://pondokit.com/"}>
-              <h1 className="underline cursor-pointer z-50">partnership</h1>
+                <h1 className="underline cursor-pointer z-50">partnership</h1>
               </Link>
               <img
                 style={{ height: 50 }}
@@ -128,7 +147,7 @@ const SignIn = () => {
                 placeholder={"Alamat Email"}
                 onChange={(e) => setEmail(e.target.value)}
                 className={
-                  "focus:ring-0 outline-none w-full py-3 px-4 text-sm font-semibold md:w-[90%]"
+                  "focus:ring-0 outline-none w-full py-3 px-4 text-sm font-medium md:w-[90%]"
                 }
                 icon={<TbMail className="text-2xl text-[#6c7077]" />}
               />
@@ -138,7 +157,7 @@ const SignIn = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className={
-                  "border-[#EEEEEE]focus:ring-0 outline-none w-full py-3 px-4 text-sm font-semibold md:w-[90%]"
+                  "border-[#EEEEEE]focus:ring-0 outline-none w-full py-3 px-4 text-sm font-medium md:w-[90%]"
                 }
                 icon={<TbLock className="text-3xl text-[#6c7077]" />}
               />
@@ -159,7 +178,7 @@ const SignIn = () => {
                 type="submit"
                 value={"Masuk"}
                 className={
-                  "w-full bg-gradient-to-r from-[#9333ea] to-[#4ade80] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 hover:bg-gradient-to-tl hover:from-[#4ade80b4] hover:to-[#9233eabe] active:scale-105"
+                  "w-full font-medium bg-gradient-to-r from-[#9333ea] to-[#4ade80] text-[20px] md:text-[23px] text-white my-5 py-3 px-3 hover:bg-gradient-to-tl hover:from-[#4ade80b4] hover:to-[#9233eabe] active:scale-105"
                 }
               />
               <div className="text-[#667085] font-medium text-sm">

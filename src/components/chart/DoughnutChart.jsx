@@ -21,15 +21,9 @@ const DoughnutChart = () => {
     datasets: [
       {
         data: [80, 20],
-        backgroundColor: [
-          'rgba(147, 51, 234, 0.5)',
-          'rgba(74, 222, 128, 0.5)',
-        ],
-         borderColor: [
-          'rgb(147, 51, 234)',
-          'rgb(74, 222, 128)',
-        ],
-        borderWidth: 2 // Warna untuk setiap sektor
+        backgroundColor: ["rgba(147, 51, 234, 0.5)", "rgba(74, 222, 128, 0.5)"],
+        borderColor: ["rgb(147, 51, 234)", "rgb(74, 222, 128)"],
+        borderWidth: 2, // Warna untuk setiap sektor
       },
     ],
   };
@@ -40,17 +34,16 @@ const DoughnutChart = () => {
       {
         data: [10, 5, 3], // Contoh data Absensi (jumlah siswa)
         backgroundColor: [
-          'rgba(147, 51, 234, 0.5)',
-          'rgba(74, 222, 128, 0.5)',
-          'rgba(249, 148, 148, 0.5)',
+          "rgba(147, 51, 234, 0.5)",
+          "rgba(74, 222, 128, 0.5)",
+          "rgba(249, 148, 148, 0.5)",
         ],
-         borderColor: [
-          'rgb(147, 51, 234)',
-          'rgba(74, 222, 128)',
-          'rgb(249, 148, 148)',
+        borderColor: [
+          "rgb(147, 51, 234)",
+          "rgba(74, 222, 128)",
+          "rgb(249, 148, 148)",
         ],
-        borderWidth: 2 // Warna untuk setiap sektor
-
+        borderWidth: 2, // Warna untuk setiap sektor
       },
     ],
   };

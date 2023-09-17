@@ -21,58 +21,74 @@ const SkillSantri = () => {
 
         <div>
         <h3 className="mb-2">Khidmat</h3>
-        <select name="" id="" className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none">
-            <option value="">70</option>
-        </select>
+        <input 
+        type="number"
+        placeholder="80" 
+        className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-3 rounded-lg outline-none"
+        />
         </div>
 
         <div>
         <h3 className="mb-2">Leadership</h3>
-        <select name="" id="" className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none">
-            <option value="">75</option>
-        </select>
+         <input 
+        type="number"
+        placeholder="70" 
+        className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-3 rounded-lg outline-none"
+        />
         </div>
 
         <div>
         <h3 className="mb-2">Enterpreneur</h3>
-        <select name="" id="" className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none">
-            <option value="">80</option>
-        </select>
+         <input 
+        type="number"
+        placeholder="75" 
+        className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-3 rounded-lg outline-none"
+        />
         </div>
 
         <div>
         <h3 className="mb-2">Speaking</h3>
-        <select name="" id="" className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none">
-            <option value="">80</option>
-        </select>
+         <input 
+        type="number"
+        placeholder="90" 
+        className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-3 rounded-lg outline-none"
+        />
         </div>
 
         <div>
         <h3 className="mb-2">Operation</h3>
-        <select name="" id="" className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none">
-            <option value="">80</option>
-        </select>
+         <input 
+        type="number"
+        placeholder="70" 
+        className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-3 rounded-lg outline-none"
+        />
         </div>
         
         <div>
         <h3 className="mb-2">Mengajar</h3>
-        <select name="" id="" className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none">
-            <option value="">80</option>
-        </select>
+         <input 
+        type="number"
+        placeholder="100" 
+        className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-3 rounded-lg outline-none"
+        />
         </div>
 
         <div>
         <h3 className="mb-2">Admiristation</h3>
-        <select name="" id="" className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none">
-            <option value="">80</option>
-        </select>
+         <input 
+        type="number"
+        placeholder="80" 
+        className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-3 rounded-lg outline-none"
+        />
         </div>
 
         <div>
         <h3 className="mb-2">Hafalan </h3>
-        <select name="" id="" className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none">
-            <option value="">80</option>
-        </select>
+         <input 
+        type="number"
+        placeholder="80" 
+        className="ring-1 ring-[#4ade80] bg-slate-50 w-32 py-2 px-3 rounded-lg outline-none"
+        />
         </div>
 
         

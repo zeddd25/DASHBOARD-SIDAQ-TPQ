@@ -213,7 +213,6 @@ const SignUp = () => {
                 alt="../public/.png"
               />
             </div>
-
             <div className="text-white w-[358px] mt-[268px] ml-[108px] absolute">
               <h1 className="font-semibold text-6xl tracking-widest">
                 Sidaq TPQ Indonesia
@@ -226,8 +225,10 @@ const SignUp = () => {
                 Indonesia.
               </h1>
             </div>
-            <div className="mt-[960px] ml-[25px] absolute text-slate-50 tracking-wide flex flex-col items-center gap-1">
-              <h1 className="underline cursor-pointer z-50">partnership</h1>
+            <div className="mt-[880px] ml-[25px] absolute text-slate-50 tracking-wide  flex flex-col items-center gap-1">
+              <Link to={"https://pondokit.com/"}>
+                <h1 className="underline cursor-pointer z-50">partnership</h1>
+              </Link>
               <img
                 style={{ height: 50 }}
                 src="../src/assets/images/logo-pondok-it.svg"
@@ -256,17 +257,17 @@ const SignUp = () => {
                 placeholder={"Nama Masjid"}
                 onChange={handleInputChange}
                 className={
-                  "focus:ring-0 border-none outline-none w-full md:w-[90%] text-sm font-semibold py-3 px-4"
+                  "focus:ring-0 border-none outline-none w-full md:w-[90%] text-sm font-medium py-3 px-4"
                 }
                 icon={<TbBuildingCottage className="text-2xl text-[#6c7077]" />}
               />
               <InputCustom
                 type="email"
-                placeholder={"Email"}
+                placeholder={"Alamat Email"}
                 name="email"
                 onChange={handleInputChange}
                 className={
-                  "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
+                  "text-sm font-medium focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
                 }
                 icon={<TbMail className="text-2xl text-[#6c7077]" />}
               />
@@ -276,7 +277,7 @@ const SignUp = () => {
                 name="password"
                 onChange={handleInputChange}
                 className={
-                  "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
+                  "text-sm font-medium focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4"
                 }
                 icon={
                   <TbLock className="text-3xl font-semibold text-[#6c7077]" />
@@ -288,11 +289,11 @@ const SignUp = () => {
                 onChange={handleInputChange}
                 placeholderImage={setFormData ? setFormData.name : ""}
                 className={
-                  "text-sm font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4 "
+                  "text-sm font-medium focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4 "
                 }
                 icon={<TbMapPin className="text-2xl text-[#6c7077]" />}
               />
-              <div className="border-[#EEEEEE] border-[1px] rounded-lg font-semibold flex items-center px-6 gap-3">
+              <div className="border-[#EEEEEE] border-[1px] rounded-lg font-medium flex items-center px-6 gap-3">
                 <TbBuildingSkyscraper className="text-2xl text-[#6c7077]" />
                 <select
                   className="text-[#9CA3AF] outline-none text-sm w-full bg-transparent py-4"
@@ -312,14 +313,14 @@ const SignUp = () => {
                 </select>
               </div>
 
-              <div className="border-[#EEEEEE] border-[1px] rounded-lg font-semibold flex items-center px-6 gap-3">
+              <div className="border-[#EEEEEE] border-[1px] rounded-lg font-medium flex items-center px-6 gap-3">
                 <TbMap className="text-2xl text-[#6c7077]" />
                 <select
                   className="text-[#9CA3AF] outline-none text-sm w-full bg-transparent py-4"
                   value={selectedRegency}
                   onChange={handleRegencyChange}
                 >
-                  <option>Pilih Kabupaten/Kota</option>
+                  <option>Pilih Kabupaten</option>
                   {regencies.map((regency) => (
                     <option
                       className="text-black"
@@ -340,16 +341,16 @@ const SignUp = () => {
                   selectedFileName ? selectedFileName : "Uploud Foto Masjid"
                 }
                 className={
-                  "text-sm text-[#9CA3AF] font-semibold focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4 appearance-none cursor-pointer"
+                  "text-sm text-[#9CA3AF] font-medium focus:ring-0 border-none outline-none w-full md:w-[90%] py-3 px-4 appearance-none cursor-pointer"
                 }
                 icon={<TbPhotoPlus className="text-2xl text-[#6c7077]" />}
               />
 
               <ButtonCustom
-                value={"Sign Up"}
+                value={"Daftar"}
                 type="submit"
                 className={
-                  "w-full bg-gradient-to-r from-[#9333ea] to-[#4ade80] text-[20px] md:text-[23px] text-white font-[700] my-5 py-3 px-3 md:py-3 hover:bg-gradient-to-tl hover:from-[#4ade80b4] hover:to-[#9233eabe] active:scale-105"
+                  "w-full font-medium bg-gradient-to-r from-[#9333ea] to-[#4ade80] text-[20px] md:text-[23px] text-white my-5 py-3 px-3 md:py-3 hover:bg-gradient-to-tl hover:from-[#4ade80b4] hover:to-[#9233eabe] active:scale-105"
                 }
               />
               <div className="text-[#667085] font-medium text-sm">

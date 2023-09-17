@@ -1,15 +1,16 @@
-import { ButtonCustom, InputCustom, RecapInfo } from "../../components/ui";
+import { ButtonCustom, RecapInfo } from "../../components/ui";
 import { useStateContext } from "../../context/StateContext";
 import InputSearch from "../../components/ui/InputSearch";
 import { useEffect, useState } from "react";
+import { useRef } from "react";
 
 const Hafalan = () => {
   const { open } = useStateContext();
-  const currentDate = new Date().toISOString().split("T")[0];
+  // const currentDate = new Date().toISOString().split("T")[0];
 
   const [surahList, setSurahList] = useState([]);
   const [selectedSurah, setSelectedSurah] = useState("");
-  const [selectedSurahAyahs, setSelectedSurahAyahs] = useState([]);
+  // const [selectedSurahAyahs, setSelectedSurahAyahs] = useState([]);
 
   useEffect(() => {
     // Memuat daftar surah dari API
@@ -28,14 +29,21 @@ const Hafalan = () => {
     if (selectedSurah !== "") {
       fetch(`https://api.alquran.cloud/v1/surah/${selectedSurah}`)
         .then((response) => response.json())
-        .then((data) => {
-          setSelectedSurahAyahs(data.data.ayahs);
-        })
+        // .then((data) => {
+        //   setSelectedSurahAyahs(data.data.ayahs);
+        // })
         .catch((error) => {
           console.error("Terjadi kesalahan saat memuat data ayah:", error);
         });
     }
   }, [selectedSurah]);
+
+  const handleCalendarClick = () => {
+    const inputDate = document.getElementById("input-date");
+    if (inputDate) {
+      inputDate.click();
+    }
+  };
 
   return (
     <div
@@ -48,9 +56,11 @@ const Hafalan = () => {
         <InputSearch />
         <div className="mt-2 border flex justify-between items-center border-t-green-400 border-l-green-400 border-r-green-400 w-full rounded-t-lg p-3 font-semibold tracking-wider">
           <h1>Data Hafalan</h1>
-          <div className="date-input-container">
-            <input type="date" value={currentDate} readOnly />
-            <span className="calendar-icon">📅</span>
+          <div className="date-input-container flex">
+            <input id="input-date" type="date" style={{ display: "none" }} />
+            <span className="calendar-icon" onClick={handleCalendarClick}>
+              📅
+            </span>
           </div>
         </div>
         <div className="border border-green-400 w-full rounded-b-lg p-4 flex flex-wrap justify-between gap-4">
@@ -72,7 +82,11 @@ const Hafalan = () => {
           </div>
           <div>
             <h3 className="mb-2">Jumlah Ayat</h3>
-            <select
+            <input
+              type="number"
+              className="ring-1 ring-green-400 bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none"
+            />
+            {/* <select
               name=""
               id=""
               className="ring-1 ring-green-400 bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none"
@@ -88,11 +102,16 @@ const Hafalan = () => {
                     </option>
                   )
                 )}
-            </select>
+            </select> */}
           </div>
           <div>
             <h3 className="mb-2">Nilai</h3>
-            <select
+            <input
+              type="number"
+              placeholder="1-100"
+              className="ring-1 ring-green-400 bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none"
+            />
+            {/* <select
               name=""
               id=""
               className="ring-1 ring-green-400 bg-slate-50 w-32 py-2 px-1 rounded-lg outline-none"
@@ -103,7 +122,7 @@ const Hafalan = () => {
                   {index * 10}
                 </option>
               ))}
-            </select>
+            </select> */}
           </div>
           <div className="w-full">
             <h3 className="mb-2">Keterangan</h3>

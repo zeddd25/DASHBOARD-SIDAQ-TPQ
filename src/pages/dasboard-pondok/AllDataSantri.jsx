@@ -43,7 +43,7 @@ const AllDataSantri = () => {
               />
 
               <button
-                className="relative z-[2] flex items-center rounded-r bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight bg-purple-600 text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+                className="relative flex items-center rounded-r px-6 py-2.5 text-xs font-medium uppercase leading-tight bg-purple-600 text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
                 type="button"
                 id="button-addon1"
                 data-te-ripple-init
@@ -54,7 +54,7 @@ const AllDataSantri = () => {
             </div>
           </div>
           <table className="w-full text-sm text-left text-gray-500">
-            <thead className="text-xs text-white tracking-wider uppercase bg-gradient-to-r from-purple-600 to-green-400">
+            <thead className="text-xs text-white tracking-wider uppercase bg-gradient-to-r from-secondary to-primary">
               <tr>
                 <th scope="col" className="px-3">
                   No
@@ -68,7 +68,7 @@ const AllDataSantri = () => {
                 <th scope="col" className="px-6 py-5">
                   Jenis Kelamin
                 </th>
-                <th scope="col" className="px-8 py-5">
+                <th scope="col" className="px-6 py-5">
                   Tanggal Lahir
                 </th>
                 <th scope="col" className="px-6 py-5">

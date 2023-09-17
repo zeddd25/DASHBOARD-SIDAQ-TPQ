@@ -7,6 +7,8 @@ import {
   TbUserPlus,
   TbSettings,
   TbCategory,
+  TbAlertCircle,
+  TbUserBolt,
 } from "react-icons/tb";
 import { Link, useLocation } from "react-router-dom";
 import { useStateContext } from "../../context/StateContext";
@@ -23,6 +25,10 @@ const Sidebar = () => {
   const isPusatPage = location.pathname.includes("/dashboard/pusat");
   const isPusatProfilePage = location.pathname.includes(
     "dashboard/profile/pusat"
+  );
+  const isMasjidDataPage = location.pathname.includes("/data-masjid/pusat");
+  const isPusatInformationPage = location.pathname.includes(
+    "/dashboard/informasi/pusat"
   );
   // PONDOK
   const isPondokPage = location.pathname.includes("/dashboard/pondok");
@@ -78,6 +84,18 @@ const Sidebar = () => {
   const menusPusat = [
     { name: "dashboard", link: "/dashboard/pusat", icon: TbHome },
     { name: "Profile", link: "/dashboard/profile/pusat", icon: TbUser },
+    {
+      name: "Masjid",
+      link: "/dashboard/data-masjid/pusat",
+      icon: TbHome,
+      gap: true,
+    },
+    {
+      name: "Informasi",
+      link: "/dashboard/informasi/pusat",
+      icon: TbAlertCircle,
+      gapLong: true,
+    },
   ];
 
   const menusPondok = [
@@ -86,7 +104,7 @@ const Sidebar = () => {
     {
       name: "Data Ustadz",
       link: "/dashboard/data-ustadz/pondok",
-      icon: TbUser,
+      icon: TbUserBolt,
       gap: true,
     },
     {
@@ -149,7 +167,12 @@ const Sidebar = () => {
 
   let sidebarTitle = "Dashboard";
 
-  if (isPusatPage || isPusatProfilePage) {
+  if (
+    isPusatPage ||
+    isPusatProfilePage ||
+    isPusatInformationPage ||
+    isMasjidDataPage
+  ) {
     sidebarTitle = "Admin Pusat";
   } else if (
     isPondokPage ||
@@ -179,7 +202,7 @@ const Sidebar = () => {
     <section className="hidden font-poppins md:flex">
       {/* SIDEBAR */}
       <div
-        className={`fixed bg-gradient-to-b from-green-400 to-purple-600 min-h-screen ${
+        className={`fixed bg-gradient-to-b from-primary to-secondary min-h-screen ${
           open ? "w-[241px]" : "w-16"
         } duration-500 text-white capitalize px-3`}
       >
@@ -218,13 +241,13 @@ const Sidebar = () => {
         </div>
 
         <div className="mt-8 flex flex-col gap-4 relative">
-          {(isPusatPage || isPusatProfilePage) &&
+          {(isPusatPage || isPusatProfilePage || isPusatInformationPage || isMasjidDataPage) &&
             menusPusat.map((menu, i) => (
               <Link
                 to={menu?.link}
                 key={i}
                 className={`${
-                  menu.gap ? "mt-9" : "mt-2"
+                  (menu.gap ? "mt-9" : "mt-2", menu.gapLong ? "mt-40" : "mt-2")
                 } outline-green-400 h-[40px] group flex items-center text-sm gap-3.5 font-medium tracking-wide p-2 transition-all duration-300 ease-in-out ${
                   isActive(menu?.link)
                     ? "bg-[#ffffff7a]"
