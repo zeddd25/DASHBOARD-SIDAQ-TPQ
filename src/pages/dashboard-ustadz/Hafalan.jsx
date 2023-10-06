@@ -2,7 +2,6 @@ import { ButtonCustom, RecapInfo } from "../../components/ui";
 import { useStateContext } from "../../context/StateContext";
 import InputSearch from "../../components/ui/InputSearch";
 import { useEffect, useState } from "react";
-import { useRef } from "react";
 
 const Hafalan = () => {
   const { open } = useStateContext();
@@ -52,7 +51,7 @@ const Hafalan = () => {
       } duration-500`}
     >
       <RecapInfo title={"Input Hafalan Harian Santri"} />
-      <div className="flex flex-col w-[500px] m-auto">
+      <div className="flex flex-col md:w-[500px] m-auto">
         <InputSearch />
         <div className="mt-2 border flex justify-between items-center border-t-green-400 border-l-green-400 border-r-green-400 w-full rounded-t-lg p-3 font-semibold tracking-wider">
           <h1>Data Hafalan</h1>

@@ -12,13 +12,13 @@ const AbsensiSantri = () => {
     >
       <RecapInfo title={"Input Absensi Santri"} />
 
-      <div className="flex flex-col mt-4">
+      <div className="flex flex-col mt-4 overflow-x-scroll lg:overflow-auto">
         <div className="m-auto flex flex-col">
-          <div className="w-full flex justify-between">
+          <div className="w-full flex items-cente">
             <select
               name=""
               id=""
-              className="ring-1 ring-prito-primary rounded-lg px-5 py-2 mb-3 bg-slate-50 border-none outline-none transition-colors"
+              className="ring-1 ring-prito-primary rounded-lg px-5 py-2 my-2 bg-slate-50 border-none outline-none transition-colors"
             >
               <option value="">Subuh</option>
               <option value="">Dzuhur</option>
@@ -37,11 +37,11 @@ const AbsensiSantri = () => {
                   <th className="px-10  py-3 border-b border-gray-200 bg-gray-50 text-left text-xs text-gray-500 uppercase tracking-wider">
                     Nama Santri
                   </th>
-                  <th className="px-20 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs text-gray-500 uppercase tracking-wider">
+                  <th className="px-24 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs text-gray-500 uppercase tracking-wider">
                     Kehadiran
                   </th>
-                  <th className="px-20 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs text-gray-500 uppercase tracking-wider">
-                    Tangal
+                  <th className="px-14 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs text-gray-500 uppercase tracking-wider">
+                    Tanggal
                   </th>
                   <th className="px-20 py-3 border-b border-gray-200 bg-gray-50">
                     Aksi
@@ -86,7 +86,7 @@ const AbsensiSantri = () => {
                     </div>
                   </td>
 
-                  <td className="px-20 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
+                  <td className="px-14 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
                     <h1>30-08-2023</h1>
                   </td>
 
@@ -136,7 +136,7 @@ const AbsensiSantri = () => {
                     </div>
                   </td>
 
-                  <td className="px-20 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
+                  <td className="px-14 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
                     <h1>30-08-2023</h1>
                   </td>
 
@@ -186,7 +186,7 @@ const AbsensiSantri = () => {
                     </div>
                   </td>
 
-                  <td className="px-20 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
+                  <td className="px-14 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
                     <h1>30-08-2023</h1>
                   </td>
 
@@ -236,7 +236,7 @@ const AbsensiSantri = () => {
                     </div>
                   </td>
 
-                  <td className="px-20 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
+                  <td className="px-14 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
                     <h1>30-08-2023</h1>
                   </td>
 
@@ -286,7 +286,7 @@ const AbsensiSantri = () => {
                     </div>
                   </td>
 
-                  <td className="px-20 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
+                  <td className="px-14 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
                     <h1>30-08-2023</h1>
                   </td>
 
@@ -336,7 +336,7 @@ const AbsensiSantri = () => {
                     </div>
                   </td>
 
-                  <td className="px-20 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
+                  <td className="px-14 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
                     <h1>30-08-2023</h1>
                   </td>
 
@@ -386,7 +386,7 @@ const AbsensiSantri = () => {
                     </div>
                   </td>
 
-                  <td className="px-20 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
+                  <td className="px-14 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
                     <h1>30-08-2023</h1>
                   </td>
 
@@ -436,7 +436,7 @@ const AbsensiSantri = () => {
                     </div>
                   </td>
 
-                  <td className="px-20 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
+                  <td className="px-14 py-2 whitespace-no-wrap border-b border-gray-200 text-gray-500">
                     <h1>30-08-2023</h1>
                   </td>
 

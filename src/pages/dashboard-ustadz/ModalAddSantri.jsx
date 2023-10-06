@@ -133,7 +133,7 @@ const ModalAddSantri = ({ onClose }) => {
         className="cursor-pointer absolute inset-0 bg-black opacity-20"
       ></div>
       <section className="bg-white font-poppins relative rounded-lg flex items-center">
-        <div className="mx-auto lg:w-[550px]">
+        <div className=" md:w-[560px]">
           <form
             className="p-5 bg-transparent flex flex-col gap-2 rounded-xl text-center"
             onSubmit={handleFormSubmit}

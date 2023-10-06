@@ -21,7 +21,7 @@ const DataSantri = () => {
       } duration-500`}
     >
       <RecapInfo title={"Input Data Santri"} />
-      <div className="flex flex-col w-[500px] m-auto">
+      <div className="flex flex-col md:w-[500px] m-auto">
         <InputSearch />
         <div className="mt-2 border border-t-[#4ade80] border-l-[#4ade80] border-r-[#4ade80] w-full rounded-t-lg p-3 font-semibold tracking-wider">
           <h1>Amal sholeh</h1>

@@ -57,14 +57,14 @@ const StaffUstadz = () => {
               <div className="flex flex-wrap lg:flex-nowrap gap-4 lg:justify-start lg:gap-[10.5px]">
                 <CardData
                   title={"Amanah"}
-                  icon={<img src="../src/assets/images/amanah.png" />}
+                  icon={<img src="../src/assets/images/amanah.svg" />}
                   Information={"BENDAHARA DKM"}
                 />
                 <CardData
                   title={"Kedisplinan"}
                   icon={
                     <img
-                      src="../src/assets/images/kedisiplinan.png"
+                      src="../src/assets/images/kedisiplinan.svg"
                       alt="icon"
                     />
                   }
@@ -73,14 +73,14 @@ const StaffUstadz = () => {
                 <CardData
                   title={"Jumlah Hafalan"}
                   icon={
-                    <img src="../src/assets/images/hafalan.png" alt="icon" />
+                    <img src="../src/assets/images/hafalan.svg" alt="icon" />
                   }
                   Information={"29 JUZ"}
                 />
                 <CardData
                   title={"Mutqin"}
                   icon={
-                    <img src="../src/assets/images/mutqin.png" alt="icon" />
+                    <img src="../src/assets/images/mutqin.svg" alt="icon" />
                   }
                   Information={"15 JUZ"}
                 />
@@ -88,7 +88,7 @@ const StaffUstadz = () => {
                   title={"Fundraising"}
                   icon={
                     <img
-                      src="../src/assets/images/Fundraising.png"
+                      src="../src/assets/images/Fundraising.svg"
                       alt="icon"
                     />
                   }

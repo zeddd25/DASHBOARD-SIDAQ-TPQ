@@ -85,10 +85,10 @@ const Pusat = () => {
                   Information={"151.529,00 Rupiah"}
                 />
                 <CardData
-                  title={""}
+                  title={"Saldo"}
                   icon={
                     <img
-                      src="../src/assets/images/Fundraising.png"
+                      src="../src/assets/images/saldo.svg"
                       alt="icon"
                     />
                   }

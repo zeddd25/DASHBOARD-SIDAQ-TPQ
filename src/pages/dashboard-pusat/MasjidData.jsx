@@ -26,7 +26,7 @@ const MasjidData = () => {
       >
         <RecapInfo title={"Data Masjid"} className={"mt-14"} />
         <div className="relative mr-5 overflow-x-auto">
-          <div className="flex items-center justify-between pb-4">
+          <div className="flex items-center justify-between pb-4 gap-4">
             <div className="relative  flex w-96 flex-wrap items-stretch">
               <input
                 type="search"
@@ -51,7 +51,7 @@ const MasjidData = () => {
               type="submit"
               eventOnClick={handleUpdate}
               className={
-                "bg-green-400 transition-all duration-300 ease-in-out hover:bg-[#4ade80b4] px-7 py-2 rounded-md text-white"
+                "bg-green-400 transition-all duration-300 ease-in-out hover:bg-[#4ade80b4] px-11 lg:px-7 lg:py-2 rounded-md text-white"
               }
             />
           </div>

@@ -35,8 +35,10 @@ import {
   Profile as PusatProfile,
 } from "../pages/dashboard-pusat";
 
+// PrivateRoute Component: Melindungi rute jika pengguna memiliki token.
+// Jika pengguna tidak memiliki token, diarahkan kembali ke halaman beranda.
 const PrivateRoute = ({ element }) => {
-  const token = localStorage.getItem("token"); // Mengambil token dari localStorage
+  const token = localStorage.getItem("token");
   return token ? element : <Navigate to="/" replace />;
 };
 

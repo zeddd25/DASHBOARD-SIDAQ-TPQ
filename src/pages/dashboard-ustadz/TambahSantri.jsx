@@ -26,8 +26,8 @@ const TambahSantri = () => {
       >
         <RecapInfo title={"Data Santri"} />
         <div className="relative mr-5 overflow-x-auto">
-          <div className="flex items-center justify-between pb-4">
-          <div className="relative flex w-96 flex-wrap items-stretch">
+          <div className="flex items-center justify-between pb-4 gap-4">
+            <div className="relative flex w-96 flex-wrap items-stretch">
               <input
                 type="search"
                 className="relative m-0 -mr-0.5 block w-[1px] min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out  focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(147, 51, 234)] focus:outline-none"
@@ -51,7 +51,7 @@ const TambahSantri = () => {
               type="submit"
               eventOnClick={handleUpdate}
               className={
-                "bg-green-400 transition-all duration-300 ease-in-out hover:bg-[#4ade80b4] px-7 py-2 rounded-md text-white"
+                "bg-green-400 transition-all duration-300 ease-in-out hover:bg-[#4ade80b4] px-11 lg:px-7 lg:py-2 rounded-md text-white"
               }
             />
           </div>
