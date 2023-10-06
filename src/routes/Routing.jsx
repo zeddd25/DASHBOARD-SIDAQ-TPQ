@@ -1,8 +1,8 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import {
-  Pengaturan,
   Santri,
   Profile as SantriProfile,
+  ToDoList,
 } from "../pages/dashboard-santri";
 import {
   Ustadz,
@@ -72,7 +72,7 @@ const Routing = () => {
         {/* <Route path="/santri/*" element={<PrivateRoute element={<Santri />} />} /> */}
         <Route path="/santri/*" element={<Santri />} />
         <Route path="/profile/santri" element={<SantriProfile />} />
-        <Route path="/pengaturan/santri" element={<Pengaturan />} />
+        <Route path="/todolist/santri" element={<ToDoList />} />
         {/* USTADZ */}
         {/* <Route path="/ustadz/*" element={<PrivateRoute element={<Ustadz />} />} /> */}
         <Route path="/ustadz/*" element={<Ustadz />} />

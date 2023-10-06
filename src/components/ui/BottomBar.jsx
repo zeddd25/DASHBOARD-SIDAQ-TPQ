@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { TbHome, TbUser, TbSettings, TbUserPlus, TbTablePlus } from "react-icons/tb";
+import {
+  TbHome,
+  TbUser,
+  TbSettings,
+  TbUserPlus,
+  TbTablePlus,
+} from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 const BottomBar = () => {
@@ -15,14 +21,17 @@ const BottomBar = () => {
   const isSantriProfilePage = location.pathname.includes(
     "/dashboard/profile/santri"
   );
-  const isSantriPengaturanPage = location.pathname.includes(
-    "/dashboard/pengaturan/santri"
+  const isSantriToDoListPage = location.pathname.includes(
+    "/dashboard/todolist/santri"
   );
 
-  // ustadz
+  // USTADZ
   const isUstadzPage = location.pathname.includes("/dashboard/ustadz");
   const isUstadzProfilePage = location.pathname.includes(
     "/dashboard/profile/ustadz"
+  );
+  const isUstadzHafalanSantriPage = location.pathname.includes(
+    "/dashboard/input-hafalan-santri/ustadz"
   );
   const isUstadzDataSantriPage = location.pathname.includes(
     "/dashboard/input-data-santri/ustadz"
@@ -31,31 +40,36 @@ const BottomBar = () => {
     "/dashboard/input-skill-santri/ustadz"
   );
   const isUstadzTambahSantriPage = location.pathname.includes(
-    "/dashboard/input-tambah/ustadz"
+    "/dashboard/input-tambah-santri/ustadz"
   );
 
   const menusSantri = [
     { link: "/dashboard/santri", icon: TbHome },
     { link: "/dashboard/profile/santri", icon: TbUser },
-    { link: "/dashboard/pengaturan/santri", icon: TbSettings },
+    { link: "/dashboard/todolist/santri", icon: TbSettings },
   ];
 
   const menusUstadz = [
     { name: "dashboard", link: "/dashboard/ustadz", icon: TbHome },
     { name: "Profile", link: "/dashboard/profile/ustadz", icon: TbUser },
     {
-      name: "Tambah Santri",
-      link: "/dashboard/input-tambah/ustadz",
+      name: "Input Data Santri",
+      link: "/dashboard/input-tambah-santri/ustadz",
       icon: TbUserPlus,
       gap: true,
     },
     {
-      name: "Input Data Santri",
+      name: "Input Hafalan Harian",
+      link: "/dashboard/input-hafalan-santri/ustadz",
+      icon: TbTablePlus,
+    },
+    {
+      name: "Input Amal Sholeh",
       link: "/dashboard/input-data-santri/ustadz",
       icon: TbTablePlus,
     },
     {
-      name: "Input Skill Santri",
+      name: "Input Skill",
       link: "/dashboard/input-skill-santri/ustadz",
       icon: TbTablePlus,
     },
@@ -63,7 +77,7 @@ const BottomBar = () => {
 
   return (
     <div className="font-poppins bg-gradient-to-r from-green-400 to-purple-600 p-2 fixed bottom-0 left-0 w-full flex justify-between md:hidden">
-      {(isSantriPage || isSantriProfilePage || isSantriPengaturanPage) &&
+      {(isSantriPage || isSantriProfilePage || isSantriToDoListPage) &&
         menusSantri.map((menu, i) => (
           <Link to={menu.link} key={i}>
             <button
@@ -81,6 +95,7 @@ const BottomBar = () => {
 
       {(isUstadzPage ||
         isUstadzProfilePage ||
+        isUstadzHafalanSantriPage ||
         isUstadzDataSantriPage ||
         isUstadzSkillSantriPage ||
         isUstadzTambahSantriPage) &&

@@ -1,5 +1,5 @@
 import Santri from "./Santri";
 import Profile from "./Profile";
-import Pengaturan from "./Pengaturan";
+import ToDoList from "./ToDoList";
 
-export { Santri, Profile, Pengaturan };
+export { Santri, Profile, ToDoList };

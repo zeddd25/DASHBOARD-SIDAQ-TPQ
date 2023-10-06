@@ -3,7 +3,7 @@ import { RecapInfo } from "../../components/ui";
 import { useState, useEffect } from "react";
 import { useStateContext } from "../../context/StateContext";
 
-const EditProfile = () => {
+const Profile = () => {
   const { open } = useStateContext();
   const [isEditing, setIsEditing] = useState(false);
 
@@ -26,7 +26,7 @@ const EditProfile = () => {
 
   // Simpan perubahan data profil (simulasi pengiriman ke server)
   const saveProfileChanges = () => {
-    // Di sini Anda dapat menambahkan logika untuk menyimpan data profil ke server.
+    // Di sini tambahkan logika untuk menyimpan data profil ke server.
     setIsEditing(false);
   };
 
@@ -69,7 +69,7 @@ const EditProfile = () => {
                 name="name"
                 value={profileData.name}
                 onChange={handleProfileChange}
-                className="text-lg border rounded-lg py-2 px-3 mb-4"
+                className="w-full text-lg border rounded-lg outline-none py-2 px-3 mb-4"
               />
             </div>
           ) : (
@@ -90,7 +90,7 @@ const EditProfile = () => {
                 name="email"
                 value={profileData.email}
                 onChange={handleProfileChange}
-                className="text-lg border rounded-lg py-2 px-3 mb-4"
+                className="w-full text-lg border rounded-lg py-2 px-3 mb-4"
               />
             </div>
           ) : (
@@ -111,7 +111,7 @@ const EditProfile = () => {
                 name="password"
                 value={profileData.password}
                 onChange={handleProfileChange}
-                className="text-lg border rounded-lg py-2 px-3 mb-4"
+                className="w-full text-lg border rounded-lg py-2 px-3 mb-4"
               />
             </div>
           ) : (
@@ -135,7 +135,7 @@ const EditProfile = () => {
                 name="birthDate"
                 value={profileData.birthDate}
                 onChange={handleProfileChange}
-                className="text-lg border rounded-lg py-2 px-3 mb-4"
+                className="w-full text-lg border rounded-lg py-2 px-3 mb-4"
               />
             </div>
           ) : (
@@ -149,7 +149,7 @@ const EditProfile = () => {
             {isEditing ? (
               <button
                 onClick={saveProfileChanges}
-                className="bg-pritext-primary text-white hover:bg-[#50A451] ring-1 ring-pritext-primary hover:ring-[#50A451] flex items-center gap-2 py-3 px-5 rounded-lg mt-4 transition duration-300 transform hover:scale-105"
+                className="bg-green-400 text-white hover:bg-[#4ade80b4] hover:ring-[#4ade80b4] flex items-center gap-2 py-3 px-5 rounded-lg mt-4 transition duration-300 transform hover:scale-105"
               >
                 <TbPencil className="text-xl" />
                 SIMPAN
@@ -170,4 +170,4 @@ const EditProfile = () => {
   );
 };
 
-export default EditProfile;
+export default Profile;

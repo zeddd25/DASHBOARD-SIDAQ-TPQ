@@ -1,8 +1,17 @@
-import { ButtonCustom, InputCustom, RecapInfo } from "../../components/ui";
+import { ButtonCustom, RecapInfo } from "../../components/ui";
 import { useStateContext } from "../../context/StateContext";
 import InputSearch from "../../components/ui/InputSearch";
+import { useEffect, useState } from "react";
+import { formatRupiah } from "../../utils/FormatRupiah";
 
 const DataSantri = () => {
+  const [fundraising, setFundraising] = useState("");
+  const [formattedFundraising, setFormattedFundraising] = useState("");
+
+  useEffect(() => {
+    setFormattedFundraising(formatRupiah(fundraising, "Rp. "));
+  }, [fundraising]);
+
   const { open } = useStateContext();
 
   return (
@@ -59,10 +68,16 @@ const DataSantri = () => {
 
           <div className="w-full">
             <h3 className="mb-2">Fundraising</h3>
-             <input
-              type="number"
+            <input
+              type="text"
               placeholder="Jumlah Uang Tunai"
               className="ring-1 ring-[#4ade80] bg-slate-50 w-full py-2 px-6 rounded-lg outline-none"
+              value={formattedFundraising}
+              onChange={(e) => {
+                // Hapus karakter selain angka
+                const newValue = e.target.value.replace(/[^0-9]/g, "");
+                setFundraising(newValue);
+              }}
             />
           </div>
         </div>

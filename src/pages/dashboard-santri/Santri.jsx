@@ -32,9 +32,9 @@ const Santri = () => {
         } duration-500`}
       >
         <main>
-          <div className="w-full px-4 flex flex-col gap-4 mt-5">
+          <div className="w-full px-4 flex flex-col gap-6 mt-5">
             <div>
-              <h1 className="text-black text-2xl lg:text-4xl font-bold leading-snug">
+              <div className="text-black text-2xl lg:text-4xl font-bold leading-snug">
                 {" "}
                 <div className="flex gap-2 text-2xl font-thin">
                   <h1>Assalamualaikum,</h1>
@@ -43,7 +43,7 @@ const Santri = () => {
                   </div>
                 </div>{" "}
                 <h1>{nameUser}</h1>
-              </h1>
+              </div>
             </div>
             <div className="w-full">
               <RecapInfo title={"Rekapan Anda"} />

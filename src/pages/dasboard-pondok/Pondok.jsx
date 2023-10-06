@@ -32,7 +32,7 @@ const Pondok = () => {
         } duration-500`}
       >
         <main>
-          <div className="w-full px-4 flex flex-col gap-4 mt-5">
+          <div className="w-full px-4 flex flex-col gap-6 mt-5">
             <div>
               <h1 className="text-black text-2xl lg:text-4xl font-bold leading-snug">
                 {" "}

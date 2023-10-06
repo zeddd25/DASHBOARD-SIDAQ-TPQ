@@ -49,8 +49,8 @@ const Sidebar = () => {
   const isSantriProfilePage = location.pathname.includes(
     "/dashboard/profile/santri"
   );
-  const isSantriPengaturanPage = location.pathname.includes(
-    "/dashboard/pengaturan/santri"
+  const isSantriToDolistPage = location.pathname.includes(
+    "/dashboard/todolist/santri"
   );
   // USTADZ
   const isUstadzPage = location.pathname.includes("/dashboard/ustadz");
@@ -123,8 +123,8 @@ const Sidebar = () => {
     { name: "dashboard", link: "/dashboard/santri", icon: TbHome },
     { name: "Profile", link: "/dashboard/profile/santri", icon: TbUser },
     {
-      name: "Pengaturan",
-      link: "/dashboard/pengaturan/santri",
+      name: "To Do List",
+      link: "/dashboard/todolist/santri",
       icon: TbSettings,
     },
   ];
@@ -181,7 +181,7 @@ const Sidebar = () => {
     isPondokDataSantri
   ) {
     sidebarTitle = "Masjid";
-  } else if (isSantriPage || isSantriProfilePage || isSantriPengaturanPage) {
+  } else if (isSantriPage || isSantriProfilePage || isSantriToDolistPage) {
     sidebarTitle = "Santri";
   } else if (
     isUstadzPage ||
@@ -241,7 +241,10 @@ const Sidebar = () => {
         </div>
 
         <div className="mt-8 flex flex-col gap-4 relative">
-          {(isPusatPage || isPusatProfilePage || isPusatInformationPage || isMasjidDataPage) &&
+          {(isPusatPage ||
+            isPusatProfilePage ||
+            isPusatInformationPage ||
+            isMasjidDataPage) &&
             menusPusat.map((menu, i) => (
               <Link
                 to={menu?.link}
@@ -313,7 +316,7 @@ const Sidebar = () => {
               </Link>
             ))}
 
-          {(isSantriPage || isSantriProfilePage || isSantriPengaturanPage) &&
+          {(isSantriPage || isSantriProfilePage || isSantriToDolistPage) &&
             menusSantri.map((menu, i) => (
               <Link
                 to={menu?.link}
