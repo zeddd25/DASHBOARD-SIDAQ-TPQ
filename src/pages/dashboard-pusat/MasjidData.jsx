@@ -15,7 +15,7 @@ const MasjidData = () => {
     setShowModal(false);
   };
 
-  const { open } = useStateContext();
+  const { open } = useStateContsext();
 
   return (
     <>

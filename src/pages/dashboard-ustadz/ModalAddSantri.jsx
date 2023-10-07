@@ -127,7 +127,7 @@ const ModalAddSantri = ({ onClose }) => {
   }
 
   return (
-    <div className="font-poppins fixed inset-0 flex items-center justify-center">
+    <sdiv className="font-poppins fixed inset-0 flex items-center justify-center">
       <div
         onClick={onClose}
         className="cursor-pointer absolute inset-0 bg-black opacity-20"
@@ -267,7 +267,7 @@ const ModalAddSantri = ({ onClose }) => {
         </div>
       </section>
       <ToastContainer />
-    </div>
+    </sdiv>
   );
 };
 
